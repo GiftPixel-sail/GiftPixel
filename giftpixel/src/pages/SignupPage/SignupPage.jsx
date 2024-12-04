@@ -42,27 +42,31 @@ const SignupPage = () => {
       <form className="signup-form" onSubmit={handleSubmit}>
         <h2>Sign Up</h2>
         <div className="form-row">
-          <Input
-            label="First name"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-            placeholder="John"
-          />
-          <Input
-            label="Last name"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-            placeholder="Doe"
-          />
-        </div>
+  <div className="input-container">
+    <Input
+      label="First name"
+      name="firstName"
+      value={formData.firstName}
+      onChange={handleChange}
+      placeholder="e.g John"
+    />
+  </div>
+  <div className="input-container">
+    <Input
+      label="Last name"
+      name="lastName"
+      value={formData.lastName}
+      onChange={handleChange}
+      placeholder="e.g Doe"
+    />
+  </div>
+</div>
         <Input
           label="Username"
           name="username"
           value={formData.username}
           onChange={handleChange}
-          placeholder="JohnDoe"
+          placeholder="e.g JohnDoe"
         />
         <Input
           label="Email"
@@ -70,32 +74,34 @@ const SignupPage = () => {
           type="email"
           value={formData.email}
           onChange={handleChange}
-          placeholder="johndoe@gmail.com"
+          placeholder="e.g johndoe@gmail.com"
         />
-        <div className="phone-group">
-          <select className="country-code">
-            <option value="+234">+234</option>
-            <option value="+1">+1</option>
-            <option value="+44">+44</option>
-          </select>
-          <Input
-            label="Phone number"
-            name="phone"
-            type="tel"
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder="9023428933"
-          />
-        </div>
+          <div className="phone-group">
+  <div className="phone-input">
+   
+    <Input
+      label="Phone number"
+      name="phone"
+      type="tel"
+      value={formData.phone}
+      onChange={handleChange}
+      placeholder="9023428933"
+      styleClass="phone-number"
+    />
+  </div>
+</div>
+
+
         <div className="password-group">
-          <Input
-            label="Password"
-            name="password"
-            type={showPassword ? "text" : "password"}
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Enter your password"
-          />
+        <Input
+          label="Password"
+          name="password"
+          type={showPassword ? "text" : "password"}
+          value={formData.password}
+          onChange={handleChange}
+          placeholder="e.g Dawson12"
+          styleClass="custom-password-input"
+        />
           <span
             className="password-toggle"
             onClick={() => setShowPassword(!showPassword)}
@@ -114,11 +120,19 @@ const SignupPage = () => {
           label="Create account"
           type="submit"
           styleClass="primary-button"
+          
         />
         <p className="signin-link">
           Already have an account? <a href="/signin">Sign In</a>
         </p>
       </form>
+
+       {/* Add the SVG image */}
+       <img
+          className="bottom-left-image"
+          src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1733307863/image_gnnaf1.png"
+          alt="Decorative SVG"
+       />
     </div>
   );
 };
