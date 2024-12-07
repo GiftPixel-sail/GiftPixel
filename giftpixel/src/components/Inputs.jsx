@@ -10,6 +10,8 @@ const Input = ({
   onChange,
   styleClass,
   icon,
+  width,
+  height,
 }) => {
   return (
     <div className={`input-group ${styleClass}`}>
