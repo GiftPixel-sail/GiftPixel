@@ -74,6 +74,7 @@ body {
   justify-content: center;
   gap: 10px;
   margin: 20px 0;
+  
 }
 
 .inputStyle {
@@ -85,6 +86,7 @@ body {
   -moz-appearance: textfield; /* For Firefox */
   -webkit-appearance: none; /* For Chrome, Safari, Edge */
   appearance: none;
+  cursor: pointer;
 }
 
 /* Remove spinner buttons for number inputs */
@@ -174,6 +176,7 @@ input[type="number"] {
 .otp-form input {
   width: 100% !important;
   margin-bottom: 0px;
+  cursor: pointer;
 }
 
 .success-message{

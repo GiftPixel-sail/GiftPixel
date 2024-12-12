@@ -4,6 +4,7 @@ import AboutPage from "./pages/AboutPage/AboutPage"
 import SignInPage from "./pages/SignInPage/SignInPage"
 import SignupPage from "./pages/SignupPage/SignupPage"
 import EmailVerificationPage from "./pages/EmailVerificationPage/EmailVerificationPage"
+import PromiseCard from "./pages/PromiseCard/PromiseCard"
 
 function App() {
  
@@ -18,6 +19,7 @@ function App() {
           <Route path="/signUp" element ={<SignupPage/>} />
           <Route path="/emailVerificationPage" element ={<EmailVerificationPage/>} />
           <Route path="/dashboard" />
+          <Route path="/createPromise" element ={<PromiseCard/>}/>
         </Routes>
       </BrowserRouter>
     </>
