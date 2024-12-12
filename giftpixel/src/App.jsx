@@ -3,6 +3,8 @@ import Homepage from "./pages/HomePage/Homepage"
 import AboutPage from "./pages/AboutPage/AboutPage"
 import SignInPage from "./pages/SignInPage/SignInPage"
 import SignupPage from "./pages/SignupPage/SignupPage"
+import EmailVerificationPage from "./pages/EmailVerificationPage/EmailVerificationPage"
+import PromiseCard from "./pages/PromiseCard/PromiseCard"
 
 function App() {
  
@@ -10,17 +12,15 @@ function App() {
   return (
     <>
       <BrowserRouter>
-          <Routes>
-              <Route path="/" element ={<Homepage/>} />
-              <Route path="/aboutUs" element ={<AboutPage/>} />
-              <Route path="/signIn" element ={<SignInPage/>} />
-              <Route path="/signUp" element ={<SignupPage/>} />
-
-
-          </Routes>
-      
-      
-      
+        <Routes>
+          <Route path="/" element ={<Homepage/>} />
+          <Route path="/aboutUs" element ={<AboutPage/>} />
+          <Route path="/signIn" element ={<SignInPage/>} />
+          <Route path="/signUp" element ={<SignupPage/>} />
+          <Route path="/emailVerificationPage" element ={<EmailVerificationPage/>} />
+          <Route path="/dashboard" />
+          <Route path="/createPromise" element ={<PromiseCard/>}/>
+        </Routes>
       </BrowserRouter>
     </>
   )

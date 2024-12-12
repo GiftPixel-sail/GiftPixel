@@ -10,6 +10,9 @@ const Input = ({
   onChange,
   styleClass,
   icon,
+  width,
+  height,
+  maxLength,
 }) => {
   return (
     <div className={`input-group ${styleClass}`}>
@@ -23,6 +26,7 @@ const Input = ({
           value={value}
           placeholder={placeholder}
           onChange={onChange}
+          maxLength= {maxLength}
         />
       </div>
     </div>
@@ -38,12 +42,14 @@ Input.propTypes = {
   onChange: PropTypes.func.isRequired,
   styleClass: PropTypes.string,
   icon: PropTypes.element,
+  maxLength : PropTypes.number
 };
 
 Input.defaultProps = {
   type: "text",
   placeholder: "",
   styleClass: "",
+  
 };
 
 export default Input;

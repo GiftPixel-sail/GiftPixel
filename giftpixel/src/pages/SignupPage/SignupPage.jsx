@@ -1,9 +1,10 @@
 // React Component: SignupPage
 import { useState } from "react";
-import "../../styles/SignupPage.css"; // Importing styles
-import Input from "../../components/Inputs"; // Custom Input Component
-import Button from "../../components/Button"; // Custom Button Component
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Icons for password visibility toggle
+import { useNavigate } from "react-router-dom"; 
+import "../../styles/SignupPage.css";
+import Input from "../../components/Inputs";
+import Button from "../../components/Button";
 
 const SignupPage = () => {
   // State to manage form data
@@ -16,8 +17,8 @@ const SignupPage = () => {
     password: "",
   });
 
-  // State to toggle password visibility
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate(); // Hook to navigate to other pages
 
   // Handle input changes
   const handleChange = (e) => {
@@ -25,10 +26,52 @@ const SignupPage = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // Handle form submission
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
+
     e.preventDefault();
+
+    // Ensure password criteria is met before submitting
+    if (!isPasswordValid()) {
+      alert("Please ensure your password meets the criteria.");
+      return;
+    }
+
     console.log("Form submitted:", formData);
+
+    try {
+      const response = await fetch("https://auth-zxvu.onrender.com/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Signup successful:", data);
+        // Redirect to email verification page or login page
+        navigate("/emailVerificationPage", { state: { email: formData.email } });
+      } else {
+        const errorData = await response.json();
+        console.error("Signup failed:", errorData);
+        // Handle server error (e.g., email already in use)
+        alert(errorData.message || "Failed to create account. Try again.");
+      }
+    } catch (error) {
+      console.error("Error during signup:", error);
+      alert("An error occurred during signup. Please try again.");
+    }
+  };
+
+  const isPasswordValid = () => {
+    return (
+      formData.password.length >= 8 &&
+      /[A-Z]/.test(formData.password) &&
+      /\d/.test(formData.password) &&
+      /[!@#$%^&*_-]/.test(formData.password)
+    );
   };
 
   // Password validation criteria
@@ -36,7 +79,7 @@ const SignupPage = () => {
     { label: "At least 8 characters", isValid: formData.password.length >= 8 },
     { label: "At least one uppercase", isValid: /[A-Z]/.test(formData.password) },
     { label: "At least one number", isValid: /\d/.test(formData.password) },
-    { label: "At least one special character", isValid: /[!@#$%^&*]/.test(formData.password) },
+    { label: "At least one special character", isValid: /[!@#$%^&*_-]/.test(formData.password) },
   ];
 
   // Validate the entire form
@@ -86,7 +129,6 @@ const SignupPage = () => {
           </div>
         </div>
 
-        {/* Username Input */}
         <Input
           label="Username"
           name="username"
@@ -105,6 +147,7 @@ const SignupPage = () => {
           placeholder="e.g johndoe@gmail.com"
         />
 
+
         {/* Phone Number Input */}
         <div className="phone-group">
           <Input
@@ -116,6 +159,7 @@ const SignupPage = () => {
             placeholder="9023428933"
             styleClass="phone-number"
           />
+
         </div>
 
         {/* Password Input with Visibility Toggle */}
@@ -133,7 +177,9 @@ const SignupPage = () => {
             className="password-toggle"
             onClick={() => setShowPassword(!showPassword)}
           >
+
             {showPassword ? <FaEyeSlash /> : <FaEye />}
+
           </span>
         </div>
 
@@ -150,8 +196,10 @@ const SignupPage = () => {
         <Button
           label="Create account"
           type="submit"
+
           styleClass={`primary-button ${isFormValid() ? "enabled" : "disabled"}`}
           disabled={!isFormValid()}
+
         />
 
         {/* Social Media Sign-Up Options */}
@@ -184,7 +232,9 @@ const SignupPage = () => {
         </p>
       </form>
 
+
       {/* Decorative SVG Image */}
+
       <img
         className="bottom-left-image"
         src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1733307863/image_gnnaf1.png"
