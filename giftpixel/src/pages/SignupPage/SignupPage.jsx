@@ -1,10 +1,13 @@
+// React Component: SignupPage
 import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Icons for password visibility toggle
 import { useNavigate } from "react-router-dom"; 
 import "../../styles/SignupPage.css";
 import Input from "../../components/Inputs";
 import Button from "../../components/Button";
 
 const SignupPage = () => {
+  // State to manage form data
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -13,15 +16,19 @@ const SignupPage = () => {
     phone: "",
     password: "",
   });
+
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate(); // Hook to navigate to other pages
 
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+
   const handleSubmit = async (e) => {
+
     e.preventDefault();
 
     // Ensure password criteria is met before submitting
@@ -67,6 +74,7 @@ const SignupPage = () => {
     );
   };
 
+  // Password validation criteria
   const passwordCriteria = [
     { label: "At least 8 characters", isValid: formData.password.length >= 8 },
     { label: "At least one uppercase", isValid: /[A-Z]/.test(formData.password) },
@@ -74,14 +82,32 @@ const SignupPage = () => {
     { label: "At least one special character", isValid: /[!@#$%^&*_-]/.test(formData.password) },
   ];
 
+  // Validate the entire form
+  const isFormValid = () => {
+    const isPasswordValid = passwordCriteria.every((criterion) => criterion.isValid);
+    return (
+      formData.firstName &&
+      formData.lastName &&
+      formData.username &&
+      formData.email &&
+      formData.phone &&
+      isPasswordValid
+    );
+  };
+
   return (
     <div className="signup-page">
+      {/* Welcome Section */}
       <div className="welcome-section">
         <h1>Welcome to GiftPixel</h1>
         <p>Share Meaningful Promises With Your Loved Ones</p>
       </div>
+
+      {/* Signup Form */}
       <form className="signup-form" onSubmit={handleSubmit}>
         <h2>Sign Up</h2>
+
+        {/* First and Last Name Inputs */}
         <div className="form-row">
           <div className="input-container">
             <Input
@@ -102,6 +128,7 @@ const SignupPage = () => {
             />
           </div>
         </div>
+
         <Input
           label="Username"
           name="username"
@@ -109,6 +136,8 @@ const SignupPage = () => {
           onChange={handleChange}
           placeholder="e.g JohnDoe"
         />
+
+        {/* Email Input */}
         <Input
           label="Email"
           name="email"
@@ -117,20 +146,23 @@ const SignupPage = () => {
           onChange={handleChange}
           placeholder="e.g johndoe@gmail.com"
         />
+
+
+        {/* Phone Number Input */}
         <div className="phone-group">
-          <div className="phone-input">
-            <Input
-              label="Phone number"
-              name="phone"
-              type="tel"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="9023428933"
-              styleClass="phone-number"
-            />
-          </div>
+          <Input
+            label="Phone number"
+            name="phone"
+            type="tel"
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="9023428933"
+            styleClass="phone-number"
+          />
+
         </div>
 
+        {/* Password Input with Visibility Toggle */}
         <div className="password-group">
           <Input
             label="Password"
@@ -145,9 +177,13 @@ const SignupPage = () => {
             className="password-toggle"
             onClick={() => setShowPassword(!showPassword)}
           >
-            {showPassword ? "Hide" : "Show"}
+
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+
           </span>
         </div>
+
+        {/* Password Validation Messages */}
         <ul className="validation-list">
           {passwordCriteria.map((criterion, index) => (
             <li key={index} className={criterion.isValid ? "valid" : "invalid"}>
@@ -155,15 +191,49 @@ const SignupPage = () => {
             </li>
           ))}
         </ul>
+
+        {/* Submit Button */}
         <Button
           label="Create account"
           type="submit"
-          styleClass="primary-button"
+
+          styleClass={`primary-button ${isFormValid() ? "enabled" : "disabled"}`}
+          disabled={!isFormValid()}
+
         />
+
+        {/* Social Media Sign-Up Options */}
+        <div className="Or-signUp-with-google">
+          <div></div>
+          <p>OR Sign up with</p>
+          <div></div>
+        </div>
+        <div className="social-icon-signUp-page">
+          <img
+            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1733753205/Frame_30_1_lt8drl.png"
+            alt="Social Logo 1"
+            className="social-logo"
+          />
+          <img
+            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1733752348/Frame_32_wazt01.png"
+            alt="Social Logo 2"
+            className="social-logo"
+          />
+          <img
+            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1733752330/Frame_34_wqavhq.png"
+            alt="Social Logo 3"
+            className="social-logo"
+          />
+        </div>
+
+        {/* Sign-In Link */}
         <p className="signin-link">
           Already have an account? <a href="/signin">Sign In</a>
         </p>
       </form>
+
+
+      {/* Decorative SVG Image */}
 
       <img
         className="bottom-left-image"
