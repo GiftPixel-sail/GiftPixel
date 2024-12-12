@@ -76,7 +76,7 @@ input {
   margin-bottom: -8px;
   font-size: 1rem;
   box-sizing: border-box;
-  margin-bottom: 10px;
+ 
 }
 /* Placeholder Styling */
 input::placeholder {
