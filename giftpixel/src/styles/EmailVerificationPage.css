@@ -176,6 +176,13 @@ input[type="number"] {
   margin-bottom: 0px;
 }
 
+.success-message{
+  color: green;
+}
+
+.error-message{
+  color: red;
+}
 
 @media (max-width: 884px) {
   body{

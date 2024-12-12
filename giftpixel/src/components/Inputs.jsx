@@ -49,7 +49,7 @@ Input.defaultProps = {
   type: "text",
   placeholder: "",
   styleClass: "",
-  maxLength : 1,
+  
 };
 
 export default Input;
