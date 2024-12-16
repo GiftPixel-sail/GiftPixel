@@ -8,6 +8,7 @@ import { FaApple,FaFacebook, FaGoogle } from "react-icons/fa";
 
 const SignInPage = () => {
   return (
+    <>
     <div className="signInDiv">
          
 
@@ -54,6 +55,8 @@ const SignInPage = () => {
 
           </div>
     </div>
+
+    </>
   )
 }
 

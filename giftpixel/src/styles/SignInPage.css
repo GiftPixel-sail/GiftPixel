@@ -1,13 +1,16 @@
 body {
     margin: 0px;
     padding: 0px;
+    /* overflow-x: hidden; */
 }
 .signInDiv{
-    background-color: #f2dfd8;
-    width: 100%;
+    /* background-color: #f2dfd8;   */
+    width: 92vw;
     height: 100vh;
     padding-top: 20px;
     font-family: "Inter", serif;
+    /* border: 2px solid red; */
+    
    
 }
 
@@ -92,4 +95,28 @@ body {
 
 .acctSettings #span {
     text-decoration: none;
+}
+
+
+@media (max-width:850px){
+    .signInDiv{
+        margin: 0px 
+    }
+
+    .main-Container{
+        flex-direction: column;
+        width: 100%;
+        /* margin: 0px 10px; */
+        
+    }
+
+    .form-container {
+        width: 100%;
+        margin: 0px;
+        padding: 0px 3px;
+    }
+
+    .form-container h2{
+        margin-left: 20px;
+    }
 }
