@@ -1,0 +1,21 @@
+/* Bouquet.css */
+
+.bouquet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    gap: 10px;
+    max-width: 100%;
+  }
+  
+  .flower-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

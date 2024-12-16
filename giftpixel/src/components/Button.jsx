@@ -25,7 +25,7 @@ Button.propTypes = {
   icon: PropTypes.element,
 };
 
-Button.defaultProps = {
+Button.defaultParameters = {
   onClick: () => {},
   type: "button",
   styleClass: "",

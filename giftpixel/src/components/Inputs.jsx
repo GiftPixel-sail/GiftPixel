@@ -10,8 +10,6 @@ const Input = ({
   onChange,
   styleClass,
   icon,
-  width,
-  height,
   maxLength,
 }) => {
   return (
@@ -27,6 +25,7 @@ const Input = ({
           placeholder={placeholder}
           onChange={onChange}
           maxLength= {maxLength}
+          
         />
       </div>
     </div>
@@ -43,6 +42,7 @@ Input.propTypes = {
   styleClass: PropTypes.string,
   icon: PropTypes.element,
   maxLength : PropTypes.number
+  
 };
 
 Input.defaultProps = {

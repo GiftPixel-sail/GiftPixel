@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../../styles/FormInput.css'; 
 
-const FormInput = ({ label, type, name }) => {
+const FormInput = ({ label, type, name}) => {
   const [value, setValue] = useState('');
   const [focused, setFocused] = useState(false);
 

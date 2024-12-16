@@ -7,6 +7,7 @@ import EmailVerificationPage from "./pages/EmailVerificationPage/EmailVerificati
 import ForgetPassword from "./pages/ForgetPassword/ForgetPassword"
 import PromiseCard from "./pages/PromiseCard/PromiseCard"
 import PropsCard from "./components/PropsCard"
+import PromiseListPage from "./pages/PromiseListPage/PromiseListPage"
 
 
 function App() {
@@ -19,12 +20,13 @@ function App() {
           <Route path="/" element ={<Homepage/>} />
           <Route path="/aboutUs" element ={<AboutPage/>} />
           <Route path="/signIn" element ={<SignInPage/>} />
-          <Route path="/forgetPassword" element = {<ForgetPassword/>} />
+          <Route path="/forgotPassword" element = {<ForgetPassword/>} />
           <Route path="/signUp" element ={<SignupPage/>} />
           <Route path="/emailVerificationPage" element ={<EmailVerificationPage/>} />
           <Route path="/dashboard" />
           <Route path="/createPromise" element ={<PromiseCard/>}/>
           <Route path="/template" element ={<PropsCard/>}/>
+          <Route path="/promiseList" element ={<PromiseListPage/>}/>
         </Routes>
       </BrowserRouter>
     </>

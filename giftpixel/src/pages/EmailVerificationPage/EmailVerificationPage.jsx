@@ -85,6 +85,8 @@ const EmailVerificationPage = () => {
   };
 
   return (
+    <div className="email-container">
+    
     <div className="EmailVerificationPage">
       <div className="welcome-section-otp">
         <h1>Welcome to GiftPixel</h1>
@@ -167,6 +169,8 @@ const EmailVerificationPage = () => {
           alt="Decorative SVG" // I included an alt text for accessibility purposes
         />
       </div>
+    </div>
+
     </div>
   );
 };

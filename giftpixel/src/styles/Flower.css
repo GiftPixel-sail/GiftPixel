@@ -1,0 +1,39 @@
+/* Flower.css */
+
+.flower {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+  
+  .petal {
+    width: 60px;
+    height: 100px;
+    background-color: orange;
+    border-radius: 50%;
+    position: absolute;
+    animation: flame 1s ease-in-out infinite;
+    transform-origin: bottom center;
+  }
+  
+  /* Keyframe for the flame animation */
+  @keyframes flame {
+    0% {
+      transform: scale(1) rotate(0deg);
+      background-color: #ff6600;
+    }
+    50% {
+      transform: scale(1.2) rotate(45deg);
+      background-color: #ff3300;
+    }
+    100% {
+      transform: scale(1) rotate(90deg);
+      background-color: #ff6600;
+    }
+  }
+  
