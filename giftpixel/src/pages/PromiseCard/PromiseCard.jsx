@@ -3,7 +3,6 @@ import { FaHeart } from "react-icons/fa";
 import Button from "../../components/Button";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie"; // Import js-cookie
-
 import SidePromise from "../../components/SidePromise";
 
 const PromiseCard = () => {
@@ -20,7 +19,11 @@ const PromiseCard = () => {
   }, []); // Run once when the component mounts
 
   const displaySideBar = () => {
-    setSidebarVisible(!sidebarVisible);
+    setSidebarVisible(!sidebarVisible); // Toggle the visibility
+  };
+
+  const closeSidebar = () => {
+    setSidebarVisible(false); // Close the sidebar
   };
 
   return (
@@ -33,7 +36,7 @@ const PromiseCard = () => {
       ) : (
         <p>Loading...</p>
       )}
-      
+
       <FaHeart className="heart-icon" />
       <p className="promiseCard-content">
         Share a promise card with your friends and help them discover the perfect gift for you!
@@ -43,9 +46,9 @@ const PromiseCard = () => {
         styleClass="action-button"
         onClick={displaySideBar}
       />
-      
+
       {/* Conditionally render the sidebar */}
-      {sidebarVisible && <SidePromise />}
+      {sidebarVisible && <SidePromise closeSidebar={closeSidebar} />}
     </div>
   );
 };
