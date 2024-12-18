@@ -5,8 +5,6 @@ import Button from "../../components/Button";
 import Cookies from 'js-cookie';
 import { FaApple, FaFacebook, FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
-import Flower from "../../components/Flower";
-import Bouquet from "../../components/Bouquet";
 
 const SignInPage = () => {
   const navigate = useNavigate();
@@ -55,20 +53,37 @@ const SignInPage = () => {
     setLoading(true);
 
     axios
-      .post("https://auth-zxvu.onrender.com/api/auth/login", userData)
+      .post("https://auth-zxvu.onrender.com/api/auth/login", userData, { withCredentials: false })
       .then((response) => {
         setLoading(false);
         setError("");
 
-        console.log(response.data.user.username);
-        
-        
-        // Save user data to localStorage
-        Cookies.set('user', JSON.stringify(response.data.user), { expires: 7 }); // expires in 1 day
+        console.log(response.data);
 
-        setTimeout(() => {
-          navigate("/createPromise");
-        }, 2000);
+  
+        Cookies.set('user', JSON.stringify(response.data.user), { expires: 1 }); 
+
+        const userId = Cookies.get("user");
+        const my_id = JSON.parse(userId)._id;
+
+        axios.get(`https://auth-zxvu.onrender.com/api/auth/user/${my_id}/promises`)
+          .then((response) => {
+
+            if (Array.isArray(response.data.promises.titles) && response.data.promises.titles.length === 0) {
+              setTimeout(() => {
+                navigate("/createPromise");
+              }, 2000);
+            } else {
+              setTimeout(() => {
+                navigate("/PromiseList");
+              }, 2000);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching user promises:", error);
+            setLoading(false);
+            setError("Error fetching promises.");
+          });
       })
       .catch((error) => {
         setLoading(false);
@@ -152,9 +167,7 @@ const SignInPage = () => {
             <p>Don’t have an Account? <Link id="span" to={"/signup"}><span>Sign up</span></Link></p>
           </div>
         </div>
-        {/* <Bouquet/> */}
       </div>
-     
     </div>
   );
 };

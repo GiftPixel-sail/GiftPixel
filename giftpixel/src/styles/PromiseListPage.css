@@ -1,42 +1,55 @@
-.main-promise-list-container{
-    /* border: 2px solid red; */
-    height: 98vh;
-    background-color: aliceblue;
-    overflow-y: none;
-   
-}
-
-.promise-list-container{
-    /* border: 2px solid red; */
-    height: 150px;
+/* Ensuring the container takes full width */
+.promise-cards-container {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.share-btn{
-    width: 105px;
-    height: 44px;
-    padding: 12px 16px 12px 16px;
-    border-radius: 10px ;
-    background:  #FF5050;
-    color: white;
-    border: none;
+    flex-direction: column;
+    gap: 16px;  /* Space between cards */
+    padding: 16px; /* Padding for the container */
+    width: 100%;  /* Full width */
+    box-sizing: border-box;  /* Ensure padding is included in the width */
+  }
+  
+  /* Styling for each card */
+  .promise-card {
     display: flex;
     align-items: center;
-    gap: 10px;
-   
-    
-}
-
-.add2List{
-    width:120px;
-    height: 42px;
-    padding: 12px;
-    border-radius: 10px;
-    border: none ;
-    background: #000000;
-    color: #FFF;
-
-}
-
+    gap: 20px;
+    background-color: #fff;  /* White background */
+    border: 1px solid #ddd;  /* Light gray border */
+    border-radius: 8px;  /* Rounded corners */
+    padding: 20px;  /* Padding inside the card */
+    width: 100%;  /* Full width of the parent container */
+    box-sizing: border-box;  /* Ensure padding is included in the width */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Soft shadow for card */
+    transition: transform 0.2s ease-in-out;  /* Smooth hover effect */
+  }
+  
+  .promise-card:hover {
+    transform: translateY(-5px);  /* Slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Enhance shadow on hover */
+  }
+  
+  /* Styling for the timestamp */
+  .timestamp {
+    font-size: 0.9rem;
+    color: #777;  /* Light gray color for timestamp */
+    margin-bottom: 8px;  /* Space below the timestamp */
+  }
+  
+  /* Styling for the promise title */
+  .promise-card h3 {
+    font-size: 1.25rem;  /* Slightly larger font for the title */
+    margin: 0;  /* Remove default margin */
+    color: #333;  /* Darker color for better visibility */
+  }
+  
+  /* Add responsive design if needed for smaller screens */
+  @media (max-width: 600px) {
+    .promise-cards-container {
+      padding: 8px;  /* Reduce padding for smaller screens */
+    }
+  
+    .promise-card {
+      padding: 15px;  /* Reduce card padding for smaller screens */
+    }
+  }
+  

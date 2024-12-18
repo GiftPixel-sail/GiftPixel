@@ -44,7 +44,7 @@ const EmailVerificationPage = () => {
         setSuccessMessage("OTP verified successfully!"); // I set the success message
         setError(""); // I reset any error message
         setTimeout(() => {
-          navigate("/dashboard"); // I navigated to the dashboard after a 2-second delay
+          navigate("/signIn"); // I navigated to the dashboard after a 2-second delay
         }, 2000);
       } else {
         // If the OTP verification fails, I show an error message
