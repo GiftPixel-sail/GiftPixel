@@ -1,55 +1,49 @@
-/* Ensuring the container takes full width */
 .promise-cards-container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;  /* Space between cards */
-    padding: 16px; /* Padding for the container */
-    width: 100%;  /* Full width */
-    box-sizing: border-box;  /* Ensure padding is included in the width */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.promise-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.promise-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timestamp {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.promise-card h3 {
+  font-size: 1.25rem;
+  margin: 0;
+  color: #333;
+}
+
+@media (max-width: 600px) {
+  .promise-cards-container {
+      padding: 8px;
   }
-  
-  /* Styling for each card */
+
   .promise-card {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background-color: #fff;  /* White background */
-    border: 1px solid #ddd;  /* Light gray border */
-    border-radius: 8px;  /* Rounded corners */
-    padding: 20px;  /* Padding inside the card */
-    width: 100%;  /* Full width of the parent container */
-    box-sizing: border-box;  /* Ensure padding is included in the width */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Soft shadow for card */
-    transition: transform 0.2s ease-in-out;  /* Smooth hover effect */
+      padding: 15px;
   }
-  
-  .promise-card:hover {
-    transform: translateY(-5px);  /* Slight lift on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Enhance shadow on hover */
-  }
-  
-  /* Styling for the timestamp */
-  .timestamp {
-    font-size: 0.9rem;
-    color: #777;  /* Light gray color for timestamp */
-    margin-bottom: 8px;  /* Space below the timestamp */
-  }
-  
-  /* Styling for the promise title */
-  .promise-card h3 {
-    font-size: 1.25rem;  /* Slightly larger font for the title */
-    margin: 0;  /* Remove default margin */
-    color: #333;  /* Darker color for better visibility */
-  }
-  
-  /* Add responsive design if needed for smaller screens */
-  @media (max-width: 600px) {
-    .promise-cards-container {
-      padding: 8px;  /* Reduce padding for smaller screens */
-    }
-  
-    .promise-card {
-      padding: 15px;  /* Reduce card padding for smaller screens */
-    }
-  }
-  
+}
