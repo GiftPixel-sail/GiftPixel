@@ -8,6 +8,7 @@ import ForgetPassword from "./pages/ForgetPassword/ForgetPassword"
 import PromiseCard from "./pages/PromiseCard/PromiseCard"
 import PropsCard from "./components/PropsCard"
 import PromiseListPage from "./pages/PromiseListPage/PromiseListPage"
+import CurrentUserpage from "./pages/CurrentUserPage/CurrentUserpage"
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/createPromise" element ={<PromiseCard/>}/>
           <Route path="/template" element ={<PropsCard/>}/>
           <Route path="/promiseList" element ={<PromiseListPage/>}/>
+          <Route path="/currentuserpage" element ={<CurrentUserpage/>}/>
         </Routes>
       </BrowserRouter>
     </>

@@ -24,6 +24,8 @@ const EmailVerificationPage = () => {
         code: otp, // I send the OTP as 'code' to the backend
       };
 
+      
+
       // I logged the OTP to the console for debugging purposes
       console.log("OTP to send:", otp);
 
@@ -35,6 +37,8 @@ const EmailVerificationPage = () => {
         },
         body: JSON.stringify(payload), // I sent only the OTP in the request body
       });
+
+      //
 
       const result = await response.json();
       console.log("Verify OTP response: ", result); // I logged the response from the server
@@ -54,9 +58,7 @@ const EmailVerificationPage = () => {
     } catch (error) {
       // I caught any errors that happened during the OTP verification process
       console.error("Error verifying OTP: ", error); // I logged the error
-      setError("Error verifying OTP: " + error.message); // I showed a detailed error message
-      setSuccessMessage(""); // I cleared the success message if there was an error
-    } finally {
+      setError("Error delay require:");
       setLoading(false); // I set loading to false when the verification process finished
     }
   };

@@ -1,22 +1,24 @@
-// import React from 'react'
-import Button from "../components/Button"
+// import React from 'react';
+import Button from "../components/Button";
 // import { PiShareFill } from "react-icons/pi";
-import "../../src/styles/PropsCard.css"
+import "../../src/styles/PropsCard.css";
 
-const PropsCard = ({title, desc}) => {
+const PropsCard = ({ title, desc , }) => {
   return (
-
-    <div>
-        <div>
-            <h2>{title}</h2>
-            <div>
-                <p>{desc}</p>
-                <Button label="Share"/>
-            </div>
+    <div className="props-card">
+      <div className="props-card-header">
+        <h2>{title}</h2>
+        <div className="props-card-content">
+          <p>{desc}</p>
+          <div className="share">
+            <Button label="share" styleClass="share-button"/>
+            <PiShareFill className="share-icon" />
         </div>
-        <Button label="+ Add To List"/>
+        </div>
+      </div>
+      <Button label="+ Add To List" styleClass="add-to-list-button" />
     </div>
-  )
-}
+  );
+};
 
-export default PropsCard
+export default PropsCard;
