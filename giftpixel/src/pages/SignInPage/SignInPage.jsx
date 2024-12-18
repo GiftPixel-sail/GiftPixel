@@ -88,6 +88,8 @@ const SignInPage = () => {
       .catch((error) => {
         setLoading(false);
         setError("Invalid email or password.");
+        console.log(error);
+        
       });
   };
 

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import Button from "../../components/Button";
+// import Button from "../../components/Button";
 import Sidebar from "../../components/Sidebar"; // Sidebar component for adding new promises
 import "../../styles/PromiseListPage.css";
-import { FaShareAlt, FaPlus } from 'react-icons/fa'; // Icons for share and add actions
+// import { FaShareAlt, FaPlus } from 'react-icons/fa'; // Icons for share and add actions
 import Cookies from "js-cookie";
 import axios from "axios";
 
@@ -11,9 +11,9 @@ const PromiseListPage = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [promises, setPromises] = useState([]); // Store promises fetched from the backend
 
-  const handleAddToListClick = () => {
-    setIsSidebarOpen(true); // Opens the sidebar when adding a new promise
-  };
+  // const handleAddToListClick = () => {
+  //   setIsSidebarOpen(true); // Opens the sidebar when adding a new promise
+  // };
 
   const handleCloseSidebar = () => {
     setIsSidebarOpen(false); // Closes the sidebar
