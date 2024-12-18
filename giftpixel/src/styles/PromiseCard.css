@@ -52,3 +52,9 @@
     background-color: #FF5050; 
   }
   
+
+  @media (max-width:900px){
+    .action-button{
+      width: 50%;
+    }
+  }
