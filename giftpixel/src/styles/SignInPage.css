@@ -41,6 +41,10 @@ body {
     margin-bottom: 30px;
 }
 
+.form-input input{
+    margin: 20px 0px;
+}
+
 .fgpwrd{
     text-decoration: none;
     color: black;
@@ -156,6 +160,10 @@ body {
         margin: 0px 
     }
 
+    .welcome-text{
+        text-align: center;
+    }
+
     .main-Container{
         flex-direction: column;
         width: 100%;
@@ -164,8 +172,8 @@ body {
     }
 
     .form-container {
-        width: 100%;
-        margin: 0px;
+        width: 95%;
+        margin: 50px auto;
         padding: 0px 3px;
     }
 

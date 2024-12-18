@@ -4,3 +4,9 @@
     font-family: "Inter", sans-serif;
     box-sizing: border-box;
 }
+
+.nav-bar{
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+}

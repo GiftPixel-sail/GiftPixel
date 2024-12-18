@@ -1,6 +1,6 @@
 // import React from 'react';
 import Button from "../components/Button";
-// import { PiShareFill } from "react-icons/pi";
+import { PiShareFill } from "react-icons/pi";
 import "../../src/styles/PropsCard.css";
 
 const PropsCard = ({ title, desc , }) => {
