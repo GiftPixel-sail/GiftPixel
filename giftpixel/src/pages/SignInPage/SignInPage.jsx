@@ -13,6 +13,7 @@ const SignInPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [successMessage, setSuccessMessage] = useState(""); // New state for success message
   const [showPassword, setShowPassword] = useState(false);
 
   const validateEmail = (email) => {
@@ -57,10 +58,10 @@ const SignInPage = () => {
       .then((response) => {
         setLoading(false);
         setError("");
+        setSuccessMessage("Login successful!"); // Set the success message
 
         console.log(response.data);
 
-  
         Cookies.set('user', JSON.stringify(response.data.user), { expires: 1 }); 
 
         const userId = Cookies.get("user");
@@ -72,11 +73,11 @@ const SignInPage = () => {
             if (Array.isArray(response.data.promises.titles) && response.data.promises.titles.length === 0) {
               setTimeout(() => {
                 navigate("/createPromise");
-              }, 2000);
+              }, 1000);
             } else {
               setTimeout(() => {
                 navigate("/PromiseList");
-              }, 2000);
+              }, 1000);
             }
           })
           .catch((error) => {
@@ -87,9 +88,9 @@ const SignInPage = () => {
       })
       .catch((error) => {
         setLoading(false);
-        setError("Invalid email or password.");
+        setError("Incorrect email or password.");
         console.log(error);
-        
+        setSuccessMessage(""); // Clear success message if login fails
       });
   };
 
@@ -168,6 +169,8 @@ const SignInPage = () => {
           <div className="acctSettings">
             <p>Don’t have an Account? <Link id="span" to={"/signup"}><span>Sign up</span></Link></p>
           </div>
+
+          {successMessage && <p className="success-message">{successMessage}</p>} {/* Display the success message */}
         </div>
       </div>
     </div>
