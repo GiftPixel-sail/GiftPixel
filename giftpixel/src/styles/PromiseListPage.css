@@ -1,49 +1,49 @@
 .promise-cards-container {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 16px;
-  width: 100%;
-  box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .promise-card {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  width: 100%;
-  box-sizing: border-box;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
 }
 
 .promise-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .timestamp {
-  font-size: 0.9rem;
-  color: #777;
-  margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 8px;
 }
 
 .promise-card h3 {
-  font-size: 1.25rem;
-  margin: 0;
-  color: #333;
+    font-size: 1.25rem;
+    margin: 0;
+    color: #333;
 }
 
 @media (max-width: 600px) {
-  .promise-cards-container {
-      padding: 8px;
-  }
+    .promise-cards-container {
+        padding: 8px;
+    }
 
-  .promise-card {
-      padding: 15px;
-  }
+    .promise-card {
+        padding: 15px;
+    }
 }
