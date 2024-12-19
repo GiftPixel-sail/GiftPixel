@@ -58,7 +58,7 @@ const SignInPage = () => {
       .then((response) => {
         setLoading(false);
         setError("");
-        setSuccessMessage("Login successful!"); // Set the success message
+        setSuccessMessage("Login Successful"); // Set the success message
 
         console.log(response.data);
 
@@ -102,12 +102,17 @@ const SignInPage = () => {
     <div className="signInDiv">
       <div className="main-Container">
         <div className="welcome-text">
+
           <h2>Welcome to GiftPixel</h2>
           <p>Share Meaningful Promises With Your Loved Ones</p>
         </div>
 
         <div className="form-container">
+
           <h2>Sign In</h2>
+
+          {successMessage && <p className="success-message">{successMessage}</p>} {/* Display the success message */}
+
           <div className="form-input">
             <label htmlFor="email">Email</label>
             <input
@@ -170,7 +175,7 @@ const SignInPage = () => {
             <p>Don’t have an Account? <Link id="span" to={"/signup"}><span>Sign up</span></Link></p>
           </div>
 
-          {successMessage && <p className="success-message">{successMessage}</p>} {/* Display the success message */}
+        
         </div>
       </div>
     </div>

@@ -119,6 +119,12 @@ body {
     font-size: 14px;
     margin-top: 5px;
   }
+  .success-message {
+    color: green;
+    font-size: 16px;
+    margin-top: 10px;
+    text-align: center;
+  }
   
   /* Loader styling */
   .loader {
@@ -127,6 +133,7 @@ body {
     margin-top: -80px;
     position: absolute;
     left: 47%;
+    /* top: 20px; */
     /* border: 2px solid red ; */
   }
   
