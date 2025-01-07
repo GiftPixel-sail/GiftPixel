@@ -7,6 +7,7 @@ import EmailVerificationPage from "./pages/EmailVerificationPage/EmailVerificati
 import ForgetPassword from "./pages/ForgetPassword/ForgetPassword"
 import PromiseCard from "./pages/PromiseCard/PromiseCard"
 import PropsCard from "./components/PropsCard"
+import Activity from "./pages/ActivityPage/Activity"
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/dashboard" />
           <Route path="/createPromise" element ={<PromiseCard/>}/>
           <Route path="/template" element ={<PropsCard/>}/>
+          <Route path="/activity" element ={<Activity />} />
         </Routes>
       </BrowserRouter>
     </>
