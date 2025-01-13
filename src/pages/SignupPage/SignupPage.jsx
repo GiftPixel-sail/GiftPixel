@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Icons for password visibility toggle
 import { useNavigate } from "react-router-dom"; 
 import "../../styles/SignupPage.css";
-// import Input from "../../components/Inputs";
+import Input from "../../components/Inputs";
 import Button from "../../components/Button";
 import Cookies from "js-cookie"
 import WelcomeSection from "../../components/WelcomeSection";
