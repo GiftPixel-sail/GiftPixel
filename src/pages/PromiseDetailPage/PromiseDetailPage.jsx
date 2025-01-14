@@ -8,17 +8,19 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { FaCopy } from "react-icons/fa";
-import "../../styles/ListOfRequest.css"; // Import your CSS for styling
+import "../../styles/ListOfRequest.css"; 
 import { PiShareThin } from "react-icons/pi";
-import { Rings } from "react-loader-spinner"; // Importing ClipLoader spinner
+import { Rings } from "react-loader-spinner"; 
 import { FaDollarSign, FaGift } from 'react-icons/fa';
+import { toast } from "react-toastify"; 
+import "react-toastify/dist/ReactToastify.css"; 
 
 
 // Modal for sharing the promise
 const Modal = ({ shareLink, onClose }) => {
     const handleCopyLink = () => {
         navigator.clipboard.writeText(shareLink);
-        alert('Link copied to clipboard!');
+        toast.info('Link copied to clipboard!');
     };
 
     const handleShare = (platform) => {
@@ -61,7 +63,7 @@ const Modal = ({ shareLink, onClose }) => {
                         className="share-link-input"
                     />
                     <button onClick={handleCopyLink} className="copy-link-button"><FaCopy color='black' /></button>
-                    <div className="social-buttons">
+                    <div className="social-buttonss">
                         <button onClick={() => handleShare('facebook')} className="social-button"> <BiLogoFacebook color='blue' size={25}/></button>
                         <button onClick={() => handleShare('twitter')} className="social-button"><FaXTwitter color='black' size={25}/></button>
                         <button onClick={() => handleShare('linkedin')} className="social-button"><FaLinkedin color='blue' size={25}/></button>
@@ -142,7 +144,7 @@ const CreatorView = ({ promiseTitleId }) => {
                                     <>{request.requestType}:</>
                                 )}
                             </strong>  <span className="reqValue">{request.requestValue}</span> 
-                            <div className="payment-status">
+                            <div className="payment-statu">
                                 {request.paid ? (
                                     <span className="paid-status">Paid</span>
                                 ) : (

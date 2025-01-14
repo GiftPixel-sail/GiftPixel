@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/PromiseListPage.css";
 import Cookies from "js-cookie";
 import axios from "axios";
-import { Rings } from "react-loader-spinner"; // Import Rings from react-loader-spinner
+import { Rings } from "react-loader-spinner";
 import Button from "../../components/Button";
 import SidePromise from "../../components/SidePromise";
 import { IoAnalytics } from "react-icons/io5";
@@ -12,106 +12,96 @@ import { FaShareFromSquare } from "react-icons/fa6";
 import { FiTrash2 } from "react-icons/fi";
 
 const PromiseListPage = () => {
-
-  const [promises, setPromises] = useState([]); // Store promises fetched from the backend
-  const [loading, setLoading] = useState(true); // Manage loading state
-  const [isSidePromiseOpen, setIsSidePromiseOpen] = useState(false); // State to control visibility of SidePromise
-  const [user, setUser] = useState(null); // Store user data
-  const navigate = useNavigate(); // React Router hook for navigation
+  const [promises, setPromises] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [isSidePromiseOpen, setIsSidePromiseOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Get token from cookies
     const token = Cookies.get("token");
-
-    // If the token is missing, redirect to the sign-in page
     if (!token) {
       console.error("Authentication token is missing");
-       // Redirect to the sign-in page
-      return; // Stop further execution if no token is found
+      return;
     }
 
-    // Fetch user data (username) from the backend API using the token
     axios
       .get("https://auth-zxvu.onrender.com/api/auth/getUsername", {
         headers: {
-          Authorization: `Bearer ${token}`, // Pass token for authentication
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => {
-        // Set the username from the API response
-        setUser(response.data); // Assuming response.data contains the username
+        setUser(response.data);
       })
       .catch((error) => {
         navigate("/signin");
         console.error("Error fetching username:", error);
       });
 
-    // Fetch the promises from the API on initial component load
-    setLoading(true); // Start loading state
+    setLoading(true);
     axios
       .get("https://auth-zxvu.onrender.com/api/auth/user/promises", {
         headers: {
-          Authorization: `Bearer ${token}`, // Pass token for authentication
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => {
-        console.log(response.data); // Log the entire response to check the structure
+        if (response.data.promises.titles.length === 0) {
+          navigate("/createPromise");
+        }
 
-        const { titles, descriptions } = response.data.promises; // Destructure titles and descriptions from the response
+        const { titles, descriptions } = response.data.promises;
 
         if (Array.isArray(titles) && Array.isArray(descriptions) && titles.length === descriptions.length) {
-          // Map titles and descriptions into a combined promises array
           const promisesArray = titles.map((title, index) => ({
             title: title.title,
             description: descriptions[index].description,
             timestamp: title.timestamp,
-            _id: title._id, // Assume each promise has a unique _id
+            _id: title._id,
           }));
 
-          setPromises(promisesArray); // Set the promises state
+          setPromises(promisesArray);
         } else {
           console.error("Invalid data structure: Titles and descriptions arrays are not in sync.");
         }
 
-        setLoading(false); // Stop loading after data is fetched
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching promises:", error);
-        setLoading(false); // Stop loading in case of an error
+        setLoading(false);
       });
-  }, [navigate]); // Add navigate to the dependency array
+  }, [navigate]);
 
   const handleAnalytics = (e, promise) => {
-    e.stopPropagation(); // Prevent event propagation to parent card
+    e.stopPropagation();
     Cookies.set("promiseId", promise._id);
     navigate("/analytics");
   };
 
   const handlePromiseClick = (promise) => {
-    navigate(`/promise/${promise._id}`, { state: { promise } }); // Passing the promise data via state
+    navigate(`/promise/${promise._id}`, { state: { promise } });
   };
 
   const handleCreatePromiseClick = () => {
-    setIsSidePromiseOpen(true); // Open the SidePromise component when button is clicked
+    setIsSidePromiseOpen(true);
   };
 
   const handleCloseSidePromise = () => {
-    setIsSidePromiseOpen(false); // Close the SidePromise component
+    setIsSidePromiseOpen(false);
   };
 
   const handleEdit = (e) => {
     e.stopPropagation();
-    // handle the edit logic here
   };
 
   const handleShare = (e) => {
     e.stopPropagation();
-    // handle the share logic here
   };
 
   const handleDelete = (e) => {
     e.stopPropagation();
-    // handle the delete logic here
   };
 
   return (
@@ -124,7 +114,7 @@ const PromiseListPage = () => {
             width={1000}
             radius="6"
             visible={true}
-            ariaLabel="rings-loading" // Accessibility label
+            ariaLabel="rings-loading"
           />
         </div>
       ) : (
@@ -141,13 +131,12 @@ const PromiseListPage = () => {
             <Button label="Create a Promise" onClick={handleCreatePromiseClick} styleClass={"btn-to-createPromise"} />
           </div>
 
-          {/* Check if user exists before rendering */}
           {promises.length > 0 ? (
             promises.map((promise, index) => (
               <div
                 key={index}
                 className="promise-card"
-                onClick={() => handlePromiseClick(promise)} // Pass the full promise object
+                onClick={() => handlePromiseClick(promise)}
               >
                 <p className="timestamp">{new Date(promise.timestamp).toLocaleString()}</p>
                 <h3>{promise.title}</h3>
@@ -160,27 +149,7 @@ const PromiseListPage = () => {
                     title="Analytics" 
                     onClick={(e) => handleAnalytics(e, promise)} 
                   />
-                  <FaEdit 
-                    className="icon general-icon" 
-                    size={30} 
-                    color="black" 
-                    title="Edit" 
-                    onClick={handleEdit} 
-                  />
-                  <FaShareFromSquare 
-                    className="icon general-icon" 
-                    size={30} 
-                    color="black" 
-                    title="Share" 
-                    onClick={handleShare} 
-                  />
-                  <FiTrash2 
-                    className="icon general-icon" 
-                    size={30} 
-                    color="red" 
-                    title="Delete" 
-                    onClick={handleDelete} 
-                  />
+          
                 </div>
               </div>
             ))
@@ -190,7 +159,6 @@ const PromiseListPage = () => {
         </div>
       )}
 
-      {/* Conditionally render the SidePromise component */}
       {isSidePromiseOpen && <SidePromise closeSidebar={handleCloseSidePromise} />}
     </div>
   );
