@@ -9,7 +9,7 @@
   }
   
   .logo-container img {
-    height: 40px; /* Adjust logo size */
+    height: 24px; /* Adjust logo size */
   }
   
   /* Links Container */
@@ -17,6 +17,10 @@
     display: flex;
     gap: 40px;
     transition: transform 0.3s ease; /* Smooth transition for menu */
+
+    nav{
+      font-size: 14px;
+    }
   }
   
   .anchor-link {
