@@ -1,4 +1,4 @@
-/* General Styles */
+    /* General Styles */
 * {
     margin: 0;
     padding: 0;
@@ -112,12 +112,13 @@ body {
     display: inline-block;
     font-size: 0.9rem;
     margin-top: 10px;
+
 }
 
 .paid-status {
     color: green;
     font-weight: bold;
-}
+    }
 
 .not-paid-status {
     color: red;
@@ -180,9 +181,14 @@ body {
 .close-button {
     font-size: 18px;
     border: none;
-    background: none;
+    background: grey;
     cursor: pointer;
     color: #333;
+}
+
+.close-button:hover{
+    color: red;
+    background: black;
 }
 
 .share-link-input {
@@ -228,11 +234,11 @@ body {
 }
 
 /* Individual Social Buttons */
-.social-button.facebook { background-color: #3b5998; }
+/* .social-button.facebook { background-color: #3b5998; }
 .social-button.twitter { background-color: #00acee; }
 .social-button.linkedin { background-color: #0077b5; }
 .social-button.whatsapp { background-color: #25d366; }
-.social-button.email { background-color: #d44638; }
+.social-button.email { background-color: #d44638; } */
 
 /* Add to List Button */
 .add2list-btn {
