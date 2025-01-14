@@ -132,25 +132,26 @@ const SignupPage = () => {
             />
           </div>
         </div>
-
-        <Input
-          label="Username"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-          placeholder="e.g JohnDoe"
-        />
-
-        {/* Email Input */}
-        <Input
-          label="Email"
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="e.g johndoe@gmail.com"
-        />
-
+        <div className="username">
+          <Input
+            label="Username"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            placeholder="e.g JohnDoe"
+          />
+        </div>
+        <div className="email">
+          {/* Email Input */}
+          <Input
+            label="Email"
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="e.g johndoe@gmail.com"
+          />
+          </div>
 
         {/* Phone Number Input */}
         <div className="phone-group">

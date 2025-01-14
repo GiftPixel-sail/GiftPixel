@@ -32,7 +32,7 @@ body {
     padding: 20px 20px;
     background-color: white;
     width: 475px;
-    height:550px;
+    height:500px;
     border-radius: 10px;
     
     /* border: 2px solid red; */
@@ -40,6 +40,7 @@ body {
   
 .form-container h2 {
     margin-bottom: 30px;
+    font-size: 1.2rem;
 }
 
 .form-input input{
@@ -50,18 +51,31 @@ body {
     text-decoration: none;
     color: black;
 }
-
+.fgpwrd-text{
+    margin-bottom: 50px;
+}
+#email{
+    margin-top: 0px;
+    font-size: 14px;
+}
+#password{
+    margin-top: 0px;
+    font-size: 14px;
+}
 
 .signBtn{
-    width: 100%;
-    background-color: #F2F2F2;
+    background-color: #d3d3d3; /* Light color for disabled state */
+    color: #fff;
+    padding: 12px 20px;
     border: none;
-    height: 40px;
-    border-radius: 20px;
-    color: #666666;
-    font-size: 20px;
-    margin-bottom: 40px;
-
+    border-radius: 50px;
+    font-size: 14px;
+    width: 100%;
+    height: 46px;
+    cursor: not-allowed;
+    transition: background-color 0.3s;
+    margin-bottom: 30px;
+   
 }
 
 .span {
@@ -70,7 +84,7 @@ body {
     justify-content: center;
     font-size: 10px;
     color: #CCCCCC;
-    margin-top: 10px;
+    margin-bottom: 20px;
 }
 .span div{
     border: 1px solid #CCCCCC;
@@ -92,15 +106,20 @@ body {
     justify-content: center;
     align-items: center;
     color: #b3b3b3;
+    margin-top: 10px;
 }
 
 .acctSettings span{
-    color: #FF5050;
+    color: rgb(209, 98, 98);
+    text-decoration: none;
+    font-weight: bold;
+}
+span:hover{
     text-decoration: none;
 }
     
 
-.acctSettings #span {
+.acctSettings #span{
     text-decoration: none;
 }
 
@@ -125,6 +144,13 @@ body {
     font-size: 16px;
     margin-top: 10px;
     text-align: center;
+  }
+  .social-media-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: -20px;
   }
   
   /* Loader styling */
@@ -160,7 +186,7 @@ body {
   .password-icon {
     position: absolute;
     right: 10px;
-    top: 50%;
+    top: 35%;
     transform: translateY(-50%);
     cursor: pointer;
   }

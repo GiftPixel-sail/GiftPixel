@@ -21,6 +21,7 @@ import getShareLinkAnalytics from "./pages/AnalyticsPAge/getShareLinkAnalytics";
 import GetShareLinkAnalytics from "./pages/AnalyticsPAge/getShareLinkAnalytics";
 import Reset from "./pages/ForgetPassword/Reset";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import AccountSettingPage from "../src/pages/AccountSettingPage/AccountSettingPage"
 
 const App = () => {
   return (
@@ -77,6 +78,7 @@ const AppContent = () => {
         />
         <Route path="/reset-password/:resetToken" element={<Reset />} />
         <Route path="profileSettings" element={<ProfilePage />} />
+        <Route path="accountsettingpage" element={<AccountSettingPage/>}/>
       </Routes>
     </>
   );

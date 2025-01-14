@@ -59,38 +59,40 @@ const WalletDetails = () => {
     };
 
     return (
-        <div className="wallet-container">
-            <h1>Wallet Details</h1>
-            <div className="wallet-details">
-                <p><strong>Balance:</strong> {walletData.balance}</p>
-            </div>
+        <div className='wallet-body'>
+            <div className="wallet-container">
+                <h1>Wallet Details</h1>
+                <div className="wallet-details">
+                    <p><strong>Balance:</strong> {walletData.balance}</p>
+                </div>
 
-  
-            <button onClick={handleWithdraw} className="withdraw-button">
-                Withdraw
-            </button>
+    
+                <button onClick={handleWithdraw} className="withdraw-button">
+                    Withdraw
+                </button>
 
-            <h2>Transaction History</h2>
-            <table className="transactions-table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Description</th>
-                        <th>Amount</th>
-                        <th>Transaction ID</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {walletData.transactions.map((transaction, index) => (
-                        <tr key={index}>
-                            <td>{new Date(transaction.timestamp).toLocaleDateString()}</td>
-                            <td>{transaction.description}</td>
-                            <td>{transaction.amount}</td>
-                            <td>{transaction.Transaction_ID}</td>
+                <h2>Transaction History</h2>
+                <table className="transactions-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Transaction ID</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {walletData.transactions.map((transaction, index) => (
+                            <tr key={index}>
+                                <td>{new Date(transaction.timestamp).toLocaleDateString()}</td>
+                                <td>{transaction.description}</td>
+                                <td>{transaction.amount}</td>
+                                <td>{transaction.Transaction_ID}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
