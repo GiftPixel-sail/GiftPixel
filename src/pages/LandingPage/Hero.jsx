@@ -1,4 +1,4 @@
-import React from "react";
+
 import "../../styles/Hero.css";
 
 const Hero = () => {
@@ -42,50 +42,14 @@ const Hero = () => {
 
       </div>
 
-      {/* Hero Images */}
+      
+      {/* Hero Image */}
       <div className="hero-images">
-        <div className="image-container">
-          <img
-            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1736559833/flask_1_wb5efb.png"
-            alt="Water Bottle"
-          />
-        </div>
-        <div className="bike-container">
-          <img
-            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1736559834/cool-bicycle-studio_1_p7dwg9.png"
-            alt="Bike"
-          />
-        </div>
-        <div className="camera-container">
-          <img
-            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1736559833/camera_1_ltvavb.png"
-            alt="Camera"
-          />
-        </div>
-        <div className="watch-container">
-          <img
-            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1736559834/apple_watch_1_sfb2gr.png"
-            alt="Watch"
-          />
-        </div>
-        <div className="laptop-container">
-          <img
-            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1736559834/lenovo-laptops-thinkbook-series-thinkbook-14-gen2-amd-hero_1_mawgdy.png"
-            alt="Laptop"
-          />
-        </div>
-        <div className="phone-container">
-          <img
-            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1736559833/rb_66815_1_bcchvy.png"
-            alt="Phone"
-          />
-        </div>
-        <div className="car-container">
-          <img
-            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1736559833/iphone_1_ovaoxo.png"
-            alt="Car"
-          />
-        </div>
+        <img
+          src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1736762062/iPhone_15_Pro_rnbbdr.png"
+          alt="iPhone 15 Pro"
+          className="hero-main-image"
+        />
       </div>
     </section>
   );
