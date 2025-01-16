@@ -1,6 +1,9 @@
+
+
 .welcome-container{
     /* border: 2px solid red; */
     /* min-height: 100vh; */
+
     width: 600px;
     height: 100%;
    
@@ -16,6 +19,17 @@
     display: flex;
     flex-direction: column;
 
+    h1{
+        position: fixed;
+        top:100px;
+    }
+    p{
+        font-size: 13px;
+        margin-top: 5px;
+        position: fixed;
+        top:140px;
+    }
+
 }
 
 .welcome-writeup img{
@@ -23,11 +37,14 @@
 }
 
 .logo-gift{
-    width: 140px;
+    width: 100px;
+    position: fixed;
 }
 
 .flower{
-    width: 400px;
+    width: 300px;
+    position: fixed;
+    top: 270px;
     animation: bounce 3s ease-in-out infinite;
 }
 

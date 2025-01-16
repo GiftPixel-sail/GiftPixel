@@ -1,7 +1,10 @@
 import { useState } from "react";
-import "../styles/Sidebar.css";
+import "../styles/Sidebar.css";   
 import axios from "axios";
 import Cookies from "js-cookie";
+import { toast } from "react-toastify"; 
+import "react-toastify/dist/ReactToastify.css"; 
+
 
 const Sidebar = ({ onClose, userId, promiseId }) => {
   const [requestType, setRequestType] = useState(""); // money or gift
@@ -34,13 +37,13 @@ const Sidebar = ({ onClose, userId, promiseId }) => {
       (requestType === "gift-item" && !giftUrl) ||
       (requestType === "money" && !moneyAmount)
     ) {
-      alert("Please fill all the required fields.");
+      toast.error("Please fill all the required fields.");
       return;
     }
 
     // Validate money amount if it's a number
     if (requestType === "money" && (isNaN(moneyAmount) || moneyAmount <= 0)) {
-      alert("Please enter a valid amount.");
+      toast.error("Please enter a valid amount.");
       return;
     }
 
@@ -79,15 +82,15 @@ const Sidebar = ({ onClose, userId, promiseId }) => {
       const result = response.data;
 
       if (result.success) {
-        alert("Request added successfully!");
+        toast.info("Request added successfully!");
         onClose(); // Close the sidebar after success
         window.location.reload();
       } else {
-        alert(`Error: ${result.message}`);
+        toast.error(`Error: ${result.message}`);
       }
     } catch (error) {
       console.error("Error submitting the form:", error);
-      alert("There was an error submitting the form.");
+      toast.error("There was an error submitting the form.");
     } finally {
       setIsSubmitting(false); // Reset loading state
     }
@@ -137,7 +140,7 @@ const Sidebar = ({ onClose, userId, promiseId }) => {
         <button
           onClick={handleSubmit}
           disabled={isSubmitting}
-          className={isSubmitting ? "btn-loading" : ""}
+          className={  isSubmitting ? "btn-loading" : " sub-button "}
         >
           {isSubmitting ? "Submitting..." : "Submit Request"}
         </button>

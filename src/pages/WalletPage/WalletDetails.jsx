@@ -54,6 +54,7 @@ const WalletDetails = () => {
     };
 
     return (
+
         <div className="wallet-container">
             {/* Wallet Balance */}
             <div className="wallet-balance">
@@ -77,19 +78,24 @@ const WalletDetails = () => {
                     </select>
                 </div>
 
+
+    
                 <table className="transactions-table">
                     <thead>
                         <tr>
                             <th>Date</th>
                             <th>Description</th>
                             <th>Amount</th>
+
                             <th>Status</th>
+
                             <th>Transaction ID</th>
                         </tr>
                     </thead>
                     <tbody>
                         {walletData.transactions.map((transaction, index) => (
                             <tr key={index}>
+
                                 <td>{new Date(transaction.timestamp).toLocaleString()}</td>
                                 <td>{transaction.description || "N/A"}</td>
                                 <td>₦{transaction.amount?.toLocaleString() || "0.00"}</td>
@@ -97,6 +103,7 @@ const WalletDetails = () => {
                                     {transaction.status || "Unknown"}
                                 </td>
                                 <td>{transaction.Transaction_ID || "N/A"}</td>
+
                             </tr>
                         ))}
                     </tbody>

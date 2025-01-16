@@ -1,3 +1,4 @@
+
 .setting-page {
   display: flex;
   gap: 20px;
@@ -12,7 +13,7 @@
   padding: 20px;
 }
 
-.profile:hover {
+/* .profile:hover {
   background: rgba(242, 242, 242, 1);
   width: 10rem;
   height: 30px;
@@ -20,7 +21,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-}
+} */
 
 .profile-account-settingbox {
   width: 20%;
@@ -89,10 +90,14 @@
   align-items: center;
   gap: 10px;
   width: 100%;
+  margin-top: 10px;
+  font-size: 14px;
 }
 
 .general {
   width: 100%;
+  margin-top: 10px;
+  font-size: 14px;
 }
 
 .name {
@@ -107,7 +112,7 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 13px;
 }
 
 .inputContainer input:disabled {
@@ -117,13 +122,14 @@
 
 .PasswordInput {
   position: relative;
+  margin-top: 20px;
   margin-bottom: 20px;
   width: 100%;
 }
 
 .PasswordToggle {
   position: absolute;
-  top: 50%;
+  top: 80%;
   right: 20px;
   transform: translateY(-50%);
   cursor: pointer;
@@ -146,3 +152,4 @@
 .ValidationMessage .invalid {
   color: red;
 }
+

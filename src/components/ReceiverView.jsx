@@ -16,8 +16,6 @@ const ReceiverView = () => {
     const [modalState, setModalState] = useState({ isOpen: false, requestId: null, amount: null });
     const navigate = useNavigate();
 
-   
-
     useEffect(() => {
         const fetchReceiverView = async () => {
             try {
@@ -100,6 +98,11 @@ const ReceiverView = () => {
         handlePayRequest(requestId, amount);
     };
 
+    // Handle redirection for the "Buy Now" button
+    const handleBuyNowRedirect = (value) => {
+        navigate(value); // Assuming the value is a valid URL
+    };
+
     if (loading) {
         return <div className="loading-spinner">Loading...</div>;
     }
@@ -117,8 +120,10 @@ const ReceiverView = () => {
                 <ul className="request-list">
                     {ReceiverView.requests.map((request, index) => (
                         <li key={index} className="request-item">
-                            <strong className="request-type">{request.requestType}:</strong>
-                            <span className="request-value">{request.requestValue}</span>
+                            <div className="request-info">
+                                <strong className="request-type">{request.requestType}:</strong>
+                                <span className="request-value">{request.requestValue}</span>
+                            </div>
                             <div className="payment-status-container">
                                 {request.paid ? (
                                     <span className="payment-status-paid">Paid</span>
@@ -127,22 +132,24 @@ const ReceiverView = () => {
                                 )}
                             </div>
 
-                            {!request.paid && (
-                                request.requestType === 'gift-item' ? (
-                                    <button
-                                        className="buy-now-btn"
-                                        onClick={() => handleBuyNowRedirect(request.requestValue)}
-                                    >
-                                        Buy Now
-                                    </button>
-                                ) : (
-                                    <button
-                                        className="pay-now-btn"
-                                        onClick={() => setModalState({ isOpen: true, requestId: request._id, amount: request.requestValue })}
-                                    >
-                                        Pay Now
-                                    </button>
-                                )
+                            {/* Conditional rendering of Buy Now button for gift item type */}
+                            {!request.paid && request.requestType === 'gift-item' && (
+                                <button
+                                    className="buy-now-btn"
+                                    onClick={() => handleBuyNowRedirect(request.requestValue)} // Redirect to the gift item's value (URL)
+                                >
+                                    Buy Now
+                                </button>
+                            )}
+
+                            {/* Pay Now button logic if request type is not a gift-item */}
+                            {!request.paid && request.requestType !== 'gift-item' && (
+                                <button
+                                    className="pay-now-btn"
+                                    onClick={() => setModalState({ isOpen: true, requestId: request._id, amount: request.requestValue })}
+                                >
+                                    Pay Now
+                                </button>
                             )}
                         </li>
                     ))}
