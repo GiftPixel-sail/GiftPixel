@@ -67,7 +67,7 @@ const AboutSection = () => {
   };
 
   return (
-    <section style={styles.section}>
+    <section id="about-us" style={styles.section}>
       <div style={styles.container}>
         {/* Image Container */}
         <div style={styles.imageContainer}>
@@ -101,7 +101,7 @@ const AboutSection = () => {
             and secure payment gateway.
           </p>
           <p style={styles.text}>
-            Whether you're celebrating a special milestone, sharing a heartfelt
+            Whether you&lsquo;re celebrating a special milestone, sharing a heartfelt
             promise, or planning a memorable event, GiftPixel provides the
             tools you need to make every moment extraordinary. Join our
             community today and discover a new way to create, share, and

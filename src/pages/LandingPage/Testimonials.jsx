@@ -1,4 +1,4 @@
-import React from "react";
+
 import TestimonialSlider from "../../components/TestimonialSlider";
 
 
@@ -26,7 +26,7 @@ const testimonialsData = [
 
 const Testimonials = () => {
   return (
-    <section className="testimonials">
+    <section id="testimonial" className="testimonials">
       <TestimonialSlider testimonials={testimonialsData} />
     </section>
   );
