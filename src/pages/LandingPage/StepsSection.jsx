@@ -44,12 +44,12 @@ const StepsSection = () => {
 
 const styles = {
   section: {
-    padding: "50px 20px",
-    backgroundColor: "#fff",
+    padding: "50px 0px",
+    maxWidth: "100%",
     textAlign: "center",
   },
   heading: {
-    fontSize: "2rem",
+    fontSize: "2rem", // Default for larger screens
     marginBottom: "30px",
     color: "#333",
   },
@@ -71,14 +71,61 @@ const styles = {
     marginBottom: "15px",
   },
   cardTitle: {
-    fontSize: "1.2rem",
+    fontSize: "1.2rem", // Default for larger screens
     margin: "10px 0",
     color: "#333",
   },
   cardDescription: {
-    fontSize: "1rem",
+    fontSize: "1rem", // Default for larger screens
     color: "#555",
     lineHeight: "1.5",
+  },
+
+  // Media Queries for Responsiveness
+  "@media (max-width: 1024px)": {
+    heading: {
+      fontSize: "1.2rem", // Slightly smaller for medium screens
+    },
+    cardTitle: {
+      fontSize: "1.1rem", // Slightly smaller for medium screens
+    },
+    cardDescription: {
+      fontSize: "0.95rem", // Slightly smaller for medium screens
+    },
+  },
+  "@media (max-width: 768px)": {
+    heading: {
+      fontSize: "1.5rem", // Smaller for tablets
+    },
+    cardTitle: {
+      fontSize: "1rem", // Smaller for tablets
+    },
+    cardDescription: {
+      fontSize: "0.9rem", // Smaller for tablets
+    },
+    stepsContainer: {
+      gap: "40px", // Reduce gap between cards
+    },
+    card: {
+      width: "250px", // Smaller card width for tablets
+    },
+  },
+  "@media (max-width: 480px)": {
+    heading: {
+      fontSize: "0.7rem", // Smallest for mobile
+    },
+    cardTitle: {
+      fontSize: "0.9rem", // Smallest for mobile
+    },
+    cardDescription: {
+      fontSize: "0.85rem", // Smallest for mobile
+    },
+    stepsContainer: {
+      gap: "20px", // Further reduce gap for small screens
+    },
+    card: {
+      width: "200px", // Adjust card width for small screens
+    },
   },
 };
 

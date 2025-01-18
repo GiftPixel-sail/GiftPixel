@@ -1,8 +1,9 @@
-import React from "react";
+
 import { FaEnvelope } from "react-icons/fa";
 
 const FeaturesSection = () => {
   return (
+    
     <section style={styles.container}>
       <h1 style={styles.header}>Explore Our Fundamental Features</h1>
       <div style={styles.wrapper}>
@@ -53,14 +54,12 @@ const FeaturesSection = () => {
 
 const styles = {
   container: {
-    width: "100%", // Reduced width by 2% (from 105% to 103%)
+    width: "100%",
     padding: "30px 20px",
-    backgroundColor: "#fff",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     boxSizing: "border-box",
-    marginLeft: "-70px", // Increased negative margin to move further left
   },
   wrapper: {
     maxWidth: "100%",
@@ -73,19 +72,18 @@ const styles = {
   },
   contentWrapper: {
     display: "flex",
-    maxWidth: "1220px", // Reduced width by 2% (from 1250px to 1220px)
-    width: "103%", // Reduced width by 2% (from 105% to 103%)
-    height: "580px",
-    alignItems: "stretch",
-    justifyContent: "flex-start", // Align content to the left
+    flexDirection: "row",
+    flexWrap: "wrap", // Allow wrapping
+    maxWidth: "1220px",
+    width: "100%",
     gap: "40px",
-    flexWrap: "nowrap",
     boxSizing: "border-box",
-    marginLeft: "-70px", // Increased negative margin to move further left
+    justifyContent: "center", // Center items on smaller screens
   },
   imageWrapper: {
     position: "relative",
-    flex: "0 0 45%",
+    flex: "1 1 45%", // Shrinks or grows to 45% width
+    maxWidth: "100%", // Ensures it doesn't overflow
     backgroundColor: "#f8f8f8",
     borderRadius: "12px",
     overflow: "hidden",
@@ -137,7 +135,8 @@ const styles = {
     marginLeft: "10px",
   },
   textWrapper: {
-    flex: "0 0 68%",
+    flex: "1 1 45%", // Shrinks or grows to 45% width
+    maxWidth: "100%", // Ensures it doesn't overflow
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
@@ -146,7 +145,6 @@ const styles = {
     borderRadius: "12px",
     padding: "20px",
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-    position: "relative",
     backgroundImage: `url('https://res.cloudinary.com/dqbbm0guw/image/upload/v1736675747/Grid_rcitvb.png')`,
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -167,16 +165,29 @@ const styles = {
     marginBottom: "20px",
   },
   chartWrapper: {
-    position: "absolute",
-    bottom: "20px",
-    right: "20px",
-    width: "60%",
-    height: "auto",
+    width: "100%",
+    maxWidth: "400px",
+    marginTop: "20px",
   },
   chartImage: {
     width: "100%",
     height: "auto",
     borderRadius: "12px",
+  },
+
+  // Responsive media queries
+  "@media (max-width: 768px)": {
+    contentWrapper: {
+      flexDirection: "column", // Stack items vertically on small screens
+      alignItems: "center",
+      gap: "20px",
+    },
+    imageWrapper: {
+      flex: "1 1 100%", // Full width on smaller screens
+    },
+    textWrapper: {
+      flex: "1 1 100%", // Full width on smaller screens
+    },
   },
 };
 
