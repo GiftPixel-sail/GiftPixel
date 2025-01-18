@@ -184,11 +184,23 @@ const SignInPage = () => {
             <div></div>
           </div>
 
-          <div className="social-icon">
-            <FaApple size={30} />
-            <FaFacebook size={30} />
-            <FaGoogle size={30} />
-          </div>
+          <div className="social-media-icon">
+          <img
+            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1733753205/Frame_30_1_lt8drl.png"
+            alt="Social Logo 1"
+            className="social-logo"
+          />
+          <img
+            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1733752348/Frame_32_wazt01.png"
+            alt="Social Logo 2"
+            className="social-logo"
+          />
+          <img
+            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1733752330/Frame_34_wqavhq.png"
+            alt="Social Logo 3"
+            className="social-logo"
+          />
+        </div>
 
           <div className="acctSettings">
             <p>Don’t have an Account? <Link id="span" to={"/signup"}><span>Sign up</span></Link></p>

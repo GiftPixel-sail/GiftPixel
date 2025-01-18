@@ -17,15 +17,14 @@
   padding: 40px; /* Left padding for the form */
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 40%;
-  
-
+  width: 50%;
   margin-bottom: 20px;
 }
 
 .signup-form h2 {
-  margin-bottom: 20px;
-  font-size: 1.4rem;
+  margin-top: -20px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
   color: black;
   text-align: left;
 }
@@ -54,15 +53,17 @@ input {
   border: 1px solid #ccc;
   border-radius: 10px;
   margin-bottom: -8px;
-  font-size: 1rem;
+  font-size: 13px;
   box-sizing: border-box;
- 
+  height: 40px;
+  
 }
 /* Placeholder Styling */
 input::placeholder {
 color: rgba(168, 155, 155, 0.5); /* Adjust to make it faded */
 font-size: 0.95rem;        /* Optional: Slightly smaller font */
 }
+
 
 
 /* Input Groups */
@@ -74,12 +75,35 @@ font-size: 0.95rem;        /* Optional: Slightly smaller font */
 
 .input-container {
   flex: 1; /* Makes each input container take equal width */
+  margin-bottom: 5px;
+  label{
+    font-size: 14px;
+  }
+}
+.username{
+  margin-bottom: 15px;
+  label{
+    font-size: 14px;
+  }
+  
+}
+
+.email{
+  margin-bottom: 15px;
+  label{
+    font-size: 14px;
+  }
+  
 }
 
 .phone-group {
   display: flex;    
   flex-direction: column;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+
+  label{
+    font-size: 14px;
+  }
 }
  
 
@@ -100,12 +124,17 @@ width: 100%; /* Or 400px, if that's your desired width */
  
  .password-group {
   position: relative;
+  margin-bottom: 15px;
+
+  label{
+    font-size: 14px;
+  }
 }
 
 .password-toggle {
   position: absolute;
   right: 10px;
-  margin-top: -33px;
+  margin-top: -10px;
   transform: translateY(-50%);
   cursor: pointer;
   font-size: 1.2rem;
@@ -137,15 +166,17 @@ width: 100%; /* Or 400px, if that's your desired width */
   color: #fff;
   padding: 12px 20px;
   border: none;
-  border-radius: 18px;
-  font-size: 1rem;
+  border-radius: 50px;
+  font-size: 14px;
   width: 100%;
+  height: 46px;
   cursor: not-allowed;
   transition: background-color 0.3s;
+ 
 }
 
 .primary-button.enabled {
-  background-color: black; /* Dark color for enabled state */
+  background-color: red; /* Dark color for enabled state */
   cursor: pointer;
 }
 
@@ -159,7 +190,7 @@ width: 100%; /* Or 400px, if that's your desired width */
   justify-content: center;
   font-size: 0.7rem;
   color: #CCCCCC;
-  margin-top: 10px;
+  margin-top: -30px;
 }
 .Or-signUp-with-google div{
   border: 1px solid #CCCCCC;
@@ -176,7 +207,8 @@ gap: 20px;
 }
 
 .social-logo {
-width: 20px;
+width: 30px;
+margin-top:15px;
 height: auto;
 cursor: grab;
 transition: transform 0.3s ease;
@@ -191,11 +223,12 @@ transform: scale(1.3);
 .signin-link {
   text-align: center;
   margin-top: 15px;
+  color: #b3b3b3;
 }
 
 .signin-link a {
   color: rgb(209, 98, 98);
-  text-decoration: underline;
+  text-decoration: none;
   font-weight: bold;
 }
 /* SVG Image Styling */

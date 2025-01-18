@@ -3,11 +3,17 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AiOutlineUser } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { PiNotePencilLight } from "react-icons/pi";
-import "../../styles/ProfilePage.css";
-import Input from "../../components/Inputs";
 import Cookies from "js-cookie";
+import Input from "../../components/Inputs";
+import ProfileImage from "../../components/ProfileImage";
+import "../../styles/ProfilePage.css";
 
 const ProfilePage = () => {
+  const [currentUser, setCurrentUser] = useState({
+    name: "John Doe",
+    image: "", // Change to a valid image URL to test
+  });
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -30,6 +36,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     const token = Cookies.get("token");
+
     const fetchUserData = async () => {
       setLoading(true);
       try {
@@ -43,7 +50,9 @@ const ProfilePage = () => {
             },
           }
         );
+
         const data = await response.json();
+
         if (data.success) {
           const { username, email, firstName, lastName, phoneNumber } = data.user;
           setFormData({
@@ -64,6 +73,7 @@ const ProfilePage = () => {
         setLoading(false);
       }
     };
+
     fetchUserData();
   }, []);
 
@@ -76,10 +86,22 @@ const ProfilePage = () => {
     setIsEditing((prev) => ({ ...prev, [field]: true }));
   };
 
+  const handleAcctSettings = () => {
+    navigate("/accountsettingpage")
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    if (!formData.firstName || !formData.lastName || !formData.username || !formData.email || !formData.phone || !formData.password) {
+
+    if (
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.username ||
+      !formData.email ||
+      !formData.phone ||
+      !formData.password
+    ) {
       setError("All fields are required.");
       return;
     }
@@ -96,6 +118,7 @@ const ProfilePage = () => {
           body: JSON.stringify(formData),
         }
       );
+
       if (response.ok) {
         const data = await response.json();
         console.log("Signup successful:", data);
@@ -119,14 +142,16 @@ const ProfilePage = () => {
         <div className="profile">
           <AiOutlineUser /> Profile settings
         </div>
-        <div className="profile">
+        <div className="profile" onClick={handleAcctSettings}>
           <AiOutlineUser /> Account settings
         </div>
       </div>
+
       <div className="info-box">
         <div className="image-container">
-          <PiNotePencilLight className="notepen-icon" />
+          <ProfileImage user={currentUser} />
         </div>
+
         <form className="Personalsetting-form" onSubmit={handleSubmit}>
           <div className="formrow">
             <div className="inputContainer">
@@ -137,10 +162,14 @@ const ProfilePage = () => {
                 onChange={handleChange}
                 placeholder="e.g Hamzah"
                 styleClass="name"
-                disabled={!isEditing.firstName} // Disabled if not in editing mode
+                disabled={!isEditing.firstName}
               />
-              <PiNotePencilLight className="icon" onClick={() => handleEditClick("firstName")} />
+              <PiNotePencilLight
+                className="icon"
+                onClick={() => handleEditClick("firstName")}
+              />
             </div>
+
             <div className="inputContainer">
               <Input
                 label="Last name"
@@ -149,9 +178,12 @@ const ProfilePage = () => {
                 onChange={handleChange}
                 placeholder="e.g Alagbe"
                 styleClass="name"
-                disabled={!isEditing.lastName} // Disabled if not in editing mode
+                disabled={!isEditing.lastName}
               />
-              <PiNotePencilLight className="icon" onClick={() => handleEditClick("lastName")} />
+              <PiNotePencilLight
+                className="icon"
+                onClick={() => handleEditClick("lastName")}
+              />
             </div>
           </div>
 
@@ -163,7 +195,7 @@ const ProfilePage = () => {
               onChange={handleChange}
               placeholder="e.g Halalhustler"
               styleClass="general"
-              disabled={true} // Always disabled for username
+              disabled
             />
           </div>
 
@@ -176,7 +208,7 @@ const ProfilePage = () => {
               onChange={handleChange}
               placeholder="e.g hamzahalagbe27@gmail.com"
               styleClass="general"
-              disabled={true} // Always disabled for email
+              disabled
             />
           </div>
 
@@ -189,9 +221,12 @@ const ProfilePage = () => {
               onChange={handleChange}
               placeholder="+2347046441783"
               styleClass="general"
-              disabled={!isEditing.phone} // Disabled if not in editing mode
+              disabled={!isEditing.phone}
             />
-            <PiNotePencilLight className="icon" onClick={() => handleEditClick("phone")} />
+            <PiNotePencilLight
+              className="icon"
+              onClick={() => handleEditClick("phone")}
+            />
           </div>
 
           <div className="PasswordInput">
@@ -204,21 +239,15 @@ const ProfilePage = () => {
               placeholder="e.g Dawson12"
               styleClass="general"
             />
-            <span className="PasswordToggle" onClick={() => setShowPassword(!showPassword)}>
+            <span
+              className="PasswordToggle"
+              onClick={() => setShowPassword(!showPassword)}
+            >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
-            <PiNotePencilLight className="icon" />
           </div>
 
-          <ul className="ValidationMessage">
-            {/* Password validation messages here */}
-          </ul>
-
           {error && <div className="error-message">{error}</div>}
-
-          <button type="submit" className="submit-btn" disabled={loading}>
-            {loading ? "Submitting..." : "Submit"}
-          </button>
         </form>
       </div>
     </div>
