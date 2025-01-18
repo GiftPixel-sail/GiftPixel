@@ -1,9 +1,10 @@
-import React from 'react';
+
 
 const Contact = () => {
   return (
-    <div
+    <div id="contact-us"
       style={{
+        
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -11,7 +12,7 @@ const Contact = () => {
         padding: '30px',
         borderRadius: '15px',
         margin: '50px auto',
-        marginTop: '120px',
+        marginTop: '150px',
         width: '80%',
         border: '4px solid #f6f3f3',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',

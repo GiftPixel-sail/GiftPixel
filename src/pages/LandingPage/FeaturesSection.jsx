@@ -4,7 +4,7 @@ import { FaEnvelope } from "react-icons/fa";
 const FeaturesSection = () => {
   return (
     
-    <section style={styles.container}>
+    <section id="features" style={styles.container}>
       <h1 style={styles.header}>Explore Our Fundamental Features</h1>
       <div style={styles.wrapper}>
         <div style={styles.contentWrapper}>
