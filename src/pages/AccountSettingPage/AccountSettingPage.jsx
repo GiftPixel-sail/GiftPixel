@@ -9,7 +9,7 @@ import "../../styles/AccountSetting.css"
 import { useNavigate } from 'react-router-dom';
 
 
-const navigate = useNavigate()
+// const navigate = useNavigate()
 
 
 const handleProfileSettings = () => {
