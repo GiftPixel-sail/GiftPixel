@@ -44,7 +44,7 @@
   
   .hamburger-icon .bar {
     width: 25px;
-    height: 3px;
+    height: auto;
     background-color: #333;
     border-radius: 5px;
   }
@@ -73,48 +73,156 @@
     }
   }
   
-  /* Notification Modal */
-  .notification-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+  /* Notification Dropdown */
+.notification-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 500px;  /* Increased width */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  z-index: 1000;
+  max-height: 680px;  /* Increased height */
+  overflow-y: auto;
+}
+/* Close Button Styling */
+.close-btn {
+  position: absolute;
+  top: 0px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 40px;
+  cursor: pointer;
+  color: #e47f7f;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #333; /* Darker color on hover */
+}
+
+
+/* Header profile container for positioning */
+.profile-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+/* Notification Items */
+.notification-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Notification Icon Styling */
+.notification-icon {
+  width: 40px;
+  height: 40px;
+  background: #f0f0f0;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  margin-right: 0; /* Remove extra margin */
+}
+/* Responsive Adjustments */
+
+
+.notification-text {
+  flex: 1;
+  padding: 10px;
+  text-align: left;
+}
+
+.notification-text p {
+  font-size: 14px;
+  margin: 3px 0;
+}
+
+.notification-text small {
+  font-size: 12px;
+  color: #777;
+  float: right;
+}
+
+/* Hamburger Menu Styles */
+.hamburger-icon {
+  display: none;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.hamburger-icon .bar {
+  width: 30px;
+  height: 4px;
+  margin: 5px;
+  background-color: #333;
+  border-radius: 4px;
+}
+
+/* Responsive Hamburger Menu */
+@media (max-width: 768px) {
+  .hamburger-icon {
+    display: block;
   }
-  
-  /* Modal Content */
-  .modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    width: 400px;
-    max-height: 80vh;
-    overflow-y: auto;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  .profile-container {
+    position: absolute;
+    right: 100px; /* Moves the profile section to the right */
+    top: 25px;
+  }
+
+  .notification-icon {
     position: relative;
+    right: 0; /* Aligns it properly */
+    margin-right: 5px; /* Small spacing */
   }
+  .notification-dropdown {
+    
+    width: 500px;  /* Increased width */
   
-  /* Loading Spinner */
-  .spinner {
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    border-top: 4px solid #333;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
   }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+}
+@media (max-width: 630px) {
+
+  .notification-dropdown {
+    right: -70px;
+    width: 400px;  /* Increased width */
+
   }
-  
+}
+@media (max-width: 530px) {
+
+  .notification-dropdown {
+   
+    width: 350px;  /* Increased width */
+    right: -70px;
+
+  }
+}
+@media (max-width: 420px) {
+
+  .notification-dropdown {
+   
+    width: 350px;  /* Increased width */
+    right: -80px;
+
+  }
+}
+@media (max-width: 320px) {
+
+  .notification-dropdown {
+   
+    width: 300px;  /* Increased width */
+    right: -90px;
+
+  }
+}
