@@ -3,11 +3,8 @@ import { useState, useEffect } from "react";
 import Sidebar from "../../components/Sidebar"; // Import Sidebar
 import axios from "axios";
 import Cookies from "js-cookie";
-import { BiLogoFacebook } from "react-icons/bi";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
-import { MdOutlineMailOutline } from "react-icons/md";
-import { FaCopy } from "react-icons/fa";
+import { CgToggleOn, CgToggleOff } from "react-icons/cg";
+
 import "../../styles/ListOfRequest.css"; 
 import { PiShareThin } from "react-icons/pi";
 import { Rings } from "react-loader-spinner"; 
@@ -16,36 +13,16 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
 
 
-// Modal for sharing the promise
 const Modal = ({ shareLink, onClose }) => {
+    const [isPrivate, setIsPrivate] = useState(false);
+
     const handleCopyLink = () => {
         navigator.clipboard.writeText(shareLink);
-        toast.info('Link copied to clipboard!');
+        toast.info("Link copied to clipboard!");
     };
 
-    const handleShare = (platform) => {
-        const url = encodeURIComponent(shareLink);
-        let shareUrl = '';
-        switch (platform) {
-            case 'facebook':
-                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-                break;
-            case 'twitter':
-                shareUrl = `https://twitter.com/intent/tweet?url=${url}`;
-                break;
-            case 'linkedin':
-                shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
-                break;
-            case 'whatsapp':
-                shareUrl = `https://wa.me/?text=${url}`;
-                break;
-            case 'email':
-                shareUrl = `mailto:?subject=Check this out&body=${url}`;
-                break;
-            default:
-                break;
-        }
-        window.open(shareUrl, '_blank');
+    const togglePrivacy = () => {
+        setIsPrivate((prev) => !prev);
     };
 
     return (
@@ -55,26 +32,77 @@ const Modal = ({ shareLink, onClose }) => {
                     <h3>Share Promise List</h3>
                     <button onClick={onClose} className="close-button">X</button>
                 </div>
-                <div className="modal-body">
+                <p className="modal-description">
+                    You can choose to make your username public or private.
+                </p>
+                <div className="share-link-wrapper">
                     <input
                         type="text"
                         value={shareLink}
                         readOnly
                         className="share-link-input"
                     />
-                    <button onClick={handleCopyLink} className="copy-link-button"><FaCopy color='black' /></button>
-                    <div className="social-buttonss">
-                        <button onClick={() => handleShare('facebook')} className="social-button"> <BiLogoFacebook color='blue' size={25}/></button>
-                        <button onClick={() => handleShare('twitter')} className="social-button"><FaXTwitter color='black' size={25}/></button>
-                        <button onClick={() => handleShare('linkedin')} className="social-button"><FaLinkedin color='blue' size={25}/></button>
-                        <button onClick={() => handleShare('whatsapp')} className="social-button"><FaWhatsapp color='green' size={25}/></button>
-                        <button onClick={() => handleShare('email')} className="social-button"><MdOutlineMailOutline color='brown' size={25}/> </button>
+                    <button onClick={handleCopyLink} className="copy-link-button">
+                        📋
+                    </button>
+                </div>
+                <div className="username-edit">
+                    Don&apos;t like your username?
+                    <a href="#edit-username"> Edit username</a>
+                </div>
+                {/* Divider line */}
+                <img
+                    src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1737374274/Frame_240_gatvwg.png"
+                    alt="Divider line"
+                    className="divider-line"
+                />
+                <div className="toggle-wrapper">
+                    <label htmlFor="username-toggle">Make username private</label>
+                    <div
+                        onClick={togglePrivacy}
+                        className="toggle-icon"
+                        style={{ cursor: "pointer" }}
+                    >
+                        {isPrivate ? (
+                            <CgToggleOn size={26} color="#4caf50" />
+                        ) : (
+                            <CgToggleOff size={26} color="#ccc" />
+                        )}
                     </div>
+                </div>
+                <div className="social-buttons">
+                    <button className="social-button">
+                        <img
+                            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1737374551/TwitterLogo_uenkeg.png"
+                            alt="Twitter"
+                        />
+                    </button>
+                    <button className="social-button">
+                        <img
+                            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1737374551/InstagramLogo_qx5m2k.png"
+                            alt="Instagram"
+                        />
+                    </button>
+                    <button className="social-button">
+                        <img
+                            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1737374551/Vector_9_gdbyoa.png"
+                            alt="Facebook"
+                        />
+                    </button>
+                    <button className="social-button">
+                        <img
+                            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1737374551/Logo-WhatsApp_1_inol5g.png"
+                            alt="WhatsApp"
+                        />
+                    </button>
                 </div>
             </div>
         </div>
     );
 };
+
+
+
 
 // This is the request display component
 const CreatorView = ({ promiseTitleId }) => {
