@@ -34,6 +34,7 @@ const AccountSettingPage = () => {
         </div>
         <div className='services'>
           <div className='center'><p>Security center</p><FaAngleRight /></div>
+          <div className='center'><p>Create Transaction Pin</p><FaAngleRight /></div>
           <div className='center'><p>Customer service center</p><FaAngleRight /></div>
           <div className='center'><p>Privacy and policy</p><FaAngleRight /></div>
           <div className='center'><p>Help and support</p><FaAngleRight /></div>

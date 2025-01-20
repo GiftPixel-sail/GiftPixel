@@ -10,10 +10,13 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 20px;
-    width: 40%;
+    width: 50%;
     height: 95vh;
     line-height: 2.5rem;
     padding: 30px;
+}
+.profile-account-settingbox{
+    width: 15%;
 }
 .Notification{
     border: 1px solid rgba(242, 223, 216, 1);
