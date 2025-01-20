@@ -14,7 +14,7 @@ const Input = ({
 }) => {
   return (
     <div className={`input-group ${styleClass}`}>
-      {label && <label htmlFor={name}>{label}</label>}
+      {label && <label htmlFor={name} className="title-label">{label}</label>}
       <div className="input-wrapper">
         {icon && <span className="icon">{icon}</span>}
         <input

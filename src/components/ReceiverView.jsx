@@ -161,7 +161,7 @@ const ReceiverView = () => {
             {/* Modal for email input */}
             {modalState.isOpen && (
                 <div className="modal-overlay">
-                    <div className="modal-content">
+                    <div className="receiver-modal-content">
                         <h3>Enter Your Email</h3>
                         <input 
                             type="email" 

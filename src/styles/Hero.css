@@ -1,18 +1,19 @@
 /* Hero Section */
 .hero-section {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 80px;
   background-color: rgba(242, 223, 216, 1);
-  height: 90vh;
-  position: relative;
-  flex-wrap: wrap;
+  min-height: 90vh;
+  gap: 20px; /* Space between items */
 }
 
 /* Hero Content */
 .hero-content {
   max-width: 60%;
+  flex: 1 1 300px;
 }
 
 .hero-title {
@@ -48,197 +49,143 @@
   background-color: #e85d5d;
 }
 
-/* Hero Images */
-.hero-images {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  max-width: 50%;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-}
-
-/* Image Containers */
-.image-container {
-  background-color: #fbfaf9;
-  border-radius: 50%;
-  padding: 30px;
-  position: relative;
-  width: 120px;
-  height: 120px;
-  margin-top: -40px;
-}
-
-.image-container img {
-  width: 100px;
-  height: auto;
-  margin-right: -30px;
-  margin-top: -100px;
-}
-
-.bike-container {
-  background-color: rgba(64, 90, 122, 1);
-  border-radius: 50%;
-  padding: 30px;
-  width: 250px;
-  height: 250px;
-  position: relative;
-  margin-top: -90px;
-}
-
-.bike-container img {
-  width: 200px;
-  height: auto;
-  position: absolute;
-  bottom: -70px;
-  right: 10px;
-}
-
-.camera-container {
-  background-color: #cde9ca;
-  border-radius: 50%;
-  padding: 20px;
-  position: relative;
-  top: 50px;
-}
-
-.camera-container img {
-  width: 80px;
-  height: auto;
-  top: 10px;
-}
-
-.watch-container {
-  background-color: rgba(205, 206, 209, 1);
-  border-radius: 50%;
-  padding: 15px;
-  position: relative;
-  top: -50px;
-  right: 20px;
-}
-
-.watch-container img {
-  width: 60px;
-  height: 60px;
-}
-
-.laptop-container {
-  background-color: #f7c3c3;
-  border-radius: 50%;
-  padding: 20px;
-  position: relative;
-  right: 10px;
-  top: 50px;
-}
-
-.laptop-container img {
-  width: 140px;
-  height: 140px;
-}
-
-.phone-container {
-  background-color: #fff5e5;
-  border-radius: 50%;
-  padding: 45px;
-  width: 50px;
-  height: 50px;
-  margin-top: 140px;
-}
-
-.phone-container img {
-  width: 100px;
-  height: auto;
-  margin-right: -80px;
-}
-
-.car-container {
-  background-color: #fcf8f0;
-  border-radius: 50%;
-  padding: 25px;
-}
-
-.car-container img {
-  width: 70px;
-  height: auto;
-}
-
-/* Avatar and Ratings */
+/* Avatar and Rating */
 .avatar-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .avatars {
   display: flex;
-  align-items: center;
+  gap: 10px;
 }
 
 .avatar {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  margin-left: -10px;
-  border: 3px solid #fff;
+  object-fit: cover;
 }
 
 .rating {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: 20px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
 }
 
 .stars {
-  font-size: 1.5rem;
-  color: #ffc107;
-  margin-bottom: 5px;
+  color: #ffbc00;
 }
 
-.rating-number {
-  font-size: 1.2rem;
-  color: #555;
+/* Hero Images Container */
+.hero-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns for the first row */
+  grid-template-rows: auto auto; /* Two rows */
+  gap: 30px;
+  justify-items: center; /* Center the items horizontally */
+  align-items: center; /* Center the items vertically */
+  max-width: 90%; /* Adjust to fit the screen */
+  margin: 0 auto; /* Center the container */
+  padding: 20px;
+  position: relative;
 }
 
-/* Media Queries */
-@media (max-width: 1024px) {
-  .hero-section {
-    padding: 60px 20px;
-  }
-
-  .hero-content {
-    max-width: 50%;
-  }
-
-  .hero-images {
-    max-width: 50%;
-  }
-
-  .hero-title {
-    font-size: 2.5rem;
-  }
-
-  .hero-description {
-    font-size: 1.2rem;
-  }
+/* Image Container */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  position: relative;
 }
+
+/* Image Styling */
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* Specific Image Containers */
+.bike-container {
+  background-color: rgba(64, 90, 122, 1); /* Dark Blue */
+}
+
+.water-bottle-container {
+  background-color: rgba(247, 247, 247, 1); /* Pale Yellow */
+  width: 80px;
+  height: 80px;
+}
+
+.watch-container {
+  background-color: rgba(220, 198, 224, 1); /* Soft Purple */
+  width: 100px;
+  height: 100px;
+}
+
+.camera-container {
+  background-color: rgb(178, 206, 227); /* Light Orange */
+  width: 100px;
+  height: 100px;
+}
+
+.laptop-container {
+  background-color: rgba(249, 192, 192, 1); /* Mint Green */
+}
+
+.phone-container {
+  background-color: rgba(206, 206, 206, 1); /* Soft Red */
+}
+
+.car-container {
+  background-color: rgba(164, 95, 50, 0.4); /* Light Blue */
+}
+
+/* Positioning for the last image to be in the center of the second row */
+.car-container {
+  grid-column: 2 / 3; /* Place in the center of the second row */
+}
+
+/* Hover Effects */
+.image-container:hover {
+  transform: scale(1.1);
+}
+
+.image-container img:hover {
+  transform: scale(1.2);
+}
+
 
 @media (max-width: 768px) {
   .hero-section {
     flex-direction: column;
-    padding: 50px 15px;
+    align-items: center;
     text-align: center;
+    padding: 20px 10px;
   }
-
-  .hero-images {
-    display: none; /* Hide the image section on smaller screens */
+  .rating {
+    
+   display: none !important;
+  }
+  
+  .stars {
+    display: none !important;
+  }
+  .avatars {
+    display: none !important;
   }
 
   .hero-content {
-    max-width: 100%;
-    margin-bottom: 30px;
+    max-width: 90%;
   }
 
   .hero-title {
@@ -247,50 +194,48 @@
 
   .hero-description {
     font-size: 1rem;
-    margin-bottom: 20px;
   }
 
   .hero-button {
-    padding: 15px 30px;
+    padding: 10px 20px;
+    font-size: 0.8rem;
   }
 
-  .avatar-container {
-    margin-top: 20px;
-    justify-content: center;
+  .hero-images {
+    display: grid; /* Switch to grid layout */
+    grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+    gap: 10px; /* Space between items */
+    width: 100%; /* Ensure it spans the container */
+    max-width: 90%; /* Constrain the max width */
   }
 
-  .avatars {
-    justify-content: center;
+  .image-container {
+    width: 120px;
+    height: 120px;
   }
 }
 
 @media (max-width: 480px) {
   .hero-title {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
   }
 
   .hero-description {
     font-size: 0.9rem;
-    margin-bottom: 15px;
   }
 
   .hero-button {
-    padding: 12px 25px;
+    padding: 8px 16px;
+    font-size: 0.7rem;
   }
 
-  .avatar-container {
-    flex-direction: column;
-    margin-top: 20px;
-    text-align: center;
+  .hero-images {
+    grid-template-columns: repeat(3, 1fr); /* Maintain 3 images per row */
+    gap: 8px; /* Slightly smaller gap for very small screens */
   }
 
-  .rating {
-    margin-left: 0;
-    margin-top: 10px;
-  }
-
-  .avatar {
-    width: 40px;
-    height: 40px;
+  .image-container {
+    width: 100px;
+    height: 100px;
   }
 }

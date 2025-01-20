@@ -1,131 +1,66 @@
-import React from "react";
+import { useState } from "react";
+import { FiMenu, FiX } from "react-icons/fi"; // Importing icons
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import "../../styles/Navbar.css";
 
 const Navbar = () => {
-  const containerStyle = {
-    position: "sticky", // Makes the navbar sticky
-    top: "0", // Sticks to the top of the viewport
-    zIndex: "1000", // Ensures the navbar stays above other elements
-    backgroundColor: "rgba(242, 223, 216, 1)", // White background
-    padding: "20px", // Padding around the navbar
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
-  const navbarStyle = {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "20px 20px",
-    backgroundColor: "#faf9f8",
-    borderRadius: "10px",
-    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", // Optional shadow for a modern look
-  };
-
-  const logoStyle = {
-    display: "flex",
-    alignItems: "center",
-    fontSize: "20px",
-    fontWeight: "bold",
-    color: "#000",
-  };
-
-  const logoImageStyle = {
-    marginRight: "8px",
-  };
-
-  const navLinksStyle = {
-    display: "flex",
-    gap: "20px",
-    listStyleType: "none",
-    margin: 0,
-    padding: 0,
-  };
-
-  const linkStyle = {
-    textDecoration: "none",
-    color: "#000",
-    fontSize: "16px",
-    fontWeight: "normal",
-  };
-
-  const buttonsStyle = {
-    display: "flex",
-    alignItems: "center",
-    gap: "10px",
-  };
-
-  const signInButtonStyle = {
-    display: "flex",
-    alignItems: "center",
-    gap: "5px",
-    fontSize: "14px",
-    fontWeight: "bold",
-    color: "#000",
-    background: "none",
-    border: "none",
-    cursor: "pointer",
-  };
-
-  const signUpButtonStyle = {
-    display: "flex",
-    alignItems: "center",
-    gap: "5px",
-    fontSize: "14px",
-    fontWeight: "bold",
-    color: "#fff",
-    backgroundColor: "#F96D5C",
-    padding: "8px 15px",
-    borderRadius: "20px",
-    border: "none",
-    cursor: "pointer",
-  };
-
-  const iconStyle = {
-    fontSize: "12px",
+  // Function to scroll to the top
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // This enables smooth scrolling
+    });
   };
 
   return (
-    <div style={containerStyle}>
-      <div style={navbarStyle}>
+    <div className="navbar-container">
+      <div className="navbar">
         {/* Logo Section */}
-        <div style={logoStyle}>
+        <div className="logo" onClick={scrollToTop}>
           <img
             src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1736857243/Group_5_mr6lzp.png"
             alt="Logo"
-            style={logoImageStyle}
           />
         </div>
 
-        {/* Navigation Links */}
-        <ul style={navLinksStyle}>
-          <li>
-            <a href="#" style={linkStyle}>
-              Features
-            </a>
-          </li>
-          <li>
-            <a href="#" style={linkStyle}>
-              About us
-            </a>
-          </li>
-          <li>
-            <a href="#" style={linkStyle}>
-              Testimonial
-            </a>
-          </li>
-          <li>
-            <a href="#" style={linkStyle}>
-              Contact US
-            </a>
-          </li>
-        </ul>
+        {/* Menu Icon */}
+        <div className="menu-icon" onClick={toggleMenu}>
+          {isMenuOpen ? <FiX /> : <FiMenu />}
+        </div>
 
-        {/* Buttons */}
-        <div style={buttonsStyle}>
-          <button style={signInButtonStyle}>
-            Sign In <span style={iconStyle}>↗</span>
-          </button>
-          <button style={signUpButtonStyle}>
-            Sign Up <span style={iconStyle}>↗</span>
-          </button>
+        {/* Navigation Links */}
+        <div className="nav-links-wrapper">
+          <ul className={`nav-links ${isMenuOpen ? "open" : ""}`}>
+            {/* Buttons Inside the Dropdown for Smaller Screens */}
+            <div className="buttons">
+              <Link to="/signIn">
+                <button className="sign-in-btn">Sign In ↗</button>
+              </Link>
+              <Link to="/signUp">
+                <button className="sign-up-btn">Sign Up ↗</button>
+              </Link>
+            </div>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about-us">About Us</a></li>
+            <li><a href="#testimonial">Testimonial</a></li>
+            <li><a href="#contact-us">Contact Us</a></li>
+          </ul>
+        </div>
+
+        {/* Buttons on the Right End for Larger Screens */}
+        <div className="buttons-right">
+          <Link to="/signIn">
+            <button className="sign-in-btn">Sign In ↗</button>
+          </Link>
+          <Link to="/signUp">
+            <button className="sign-up-btn">Sign Up ↗</button>
+          </Link>
         </div>
       </div>
     </div>

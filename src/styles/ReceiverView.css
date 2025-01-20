@@ -93,7 +93,7 @@
     border-radius: 4px;
 }
 
-.modal-content button {
+/* .receiver-modal-content button {
     width: 100%;
     padding: 10px;
     background-color: #4CAF50;
@@ -104,6 +104,6 @@
     transition: background-color 0.3s;
 }
 
-.modal-content button:hover {
+..receiver-modal-content button:hover {
     background-color: #45a049;
-}
+} */

@@ -17,9 +17,9 @@ const TestimonialSlider = ({ testimonials }) => {
     );
   };
 
+  // Inline Styles
   const sliderStyle = {
     padding: "50px 0",
-    
     textAlign: "center",
     position: "relative",
   };
@@ -46,26 +46,26 @@ const TestimonialSlider = ({ testimonials }) => {
     alignItems: "center",
     gap: "20px",
     position: "relative",
+    transition: "opacity 0.5s ease-in-out", // Smooth fade transition
   };
 
   const navBtnStyle = {
     background: "none",
     border: "none",
-    fontSize: "2rem", // Adjusted size to make them more noticeable
+    fontSize: "2rem",
     color: "#333",
     cursor: "pointer",
   };
 
   const navigationStyle = {
-    position: "relative",
-    bottom: "-100px", // Move the buttons further down
+    position: "absolute",
+    bottom: "-100px",
     left: "50%",
-    transform: "translateX(-50%)", // Center the buttons horizontally
+    transform: "translateX(-50%)",
     display: "flex",
-    justifyContent: "center", // Align buttons horizontally
-    gap: "10px", // Maintain the gap between the buttons
+    justifyContent: "center",
+    gap: "10px",
   };
-  
 
   return (
     <div style={sliderStyle}>
@@ -76,21 +76,36 @@ const TestimonialSlider = ({ testimonials }) => {
 
       <div style={contentStyle}>
         {testimonials.map((testimonial, index) => (
-          <TestimonialCard
+          <div
             key={index}
-            text={testimonial.text}
-            name={testimonial.name}
-            image={testimonial.image}
-            highlight={index === currentIndex}
-          />
+            style={{
+              ...contentStyle,
+              opacity: index === currentIndex ? 1 : 0,
+              display: index === currentIndex ? "block" : "none", // Hide non-current testimonials
+            }}
+          >
+            <TestimonialCard
+              text={testimonial.text}
+              name={testimonial.name}
+              image={testimonial.image}
+            />
+          </div>
         ))}
       </div>
 
       <div style={navigationStyle}>
-        <button style={navBtnStyle} onClick={handlePrev}>
+        <button
+          style={navBtnStyle}
+          onClick={handlePrev}
+          aria-label="Previous Testimonial"
+        >
           <FaChevronLeft />
         </button>
-        <button style={navBtnStyle} onClick={handleNext}>
+        <button
+          style={navBtnStyle}
+          onClick={handleNext}
+          aria-label="Next Testimonial"
+        >
           <FaChevronRight />
         </button>
       </div>

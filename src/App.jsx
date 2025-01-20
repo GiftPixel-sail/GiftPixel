@@ -17,7 +17,6 @@ import Header from "./static/Header";
 import PaymentSuccess from "./pages/PaymentSuccessPage/PaymentSuccessPage";
 import NotFound from "./components/NotFound";
 import WalletDetails from "./pages/WalletPage/WalletDetails";
-import getShareLinkAnalytics from "./pages/AnalyticsPAge/getShareLinkAnalytics";
 import GetShareLinkAnalytics from "./pages/AnalyticsPAge/getShareLinkAnalytics";
 import Reset from "./pages/ForgetPassword/Reset";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";

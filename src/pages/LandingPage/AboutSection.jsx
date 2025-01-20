@@ -1,4 +1,4 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const AboutSection = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -18,28 +18,32 @@ const AboutSection = () => {
       maxWidth: "1200px",
       margin: "0 auto",
       display: "grid",
-      gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+      gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", // Single column on mobile, two columns on desktop
+      alignItems: "center", // Align text and image in the center
       gap: "2rem",
     },
     imageContainer: {
       display: "flex",
-      alignItems: "flex-end", // Align images to the bottom
-      position: "relative",
-      gap: "0px", // No gap between images
-      marginLeft: isMobile ? "0" : "-8rem", // Adjust for mobile view
+      justifyContent: isMobile ? "center" : "flex-start", // Center on mobile, align left on desktop
+      alignItems: "center",
+      alignSelf: isMobile ? "initial" : "flex-end", // Move image to bottom on larger screens
+      order: isMobile ? "2" : "1", // Show image below text on mobile
+      position: "relative", // Needed for bottom positioning
+      marginBottom: "-63px", // Needed for bottom positioning
     },
+    
     image: {
-      width: isMobile ? "80%" : "40%", // Adjust image size for smaller screens
+      width: isMobile ? "70%" : "90%", // Adjust size based on screen
       objectFit: "contain",
-      marginBottom: isMobile ? "-30px" : "-60px", // Fine-tune the value
-      marginRight: isMobile ? "0" : "-60px", // Adjust for mobile view
     },
     textContainer: {
-      paddingLeft: "1rem",
+      order: isMobile ? "1" : "2", // Show text above image on mobile
+      textAlign: isMobile ? "center" : "left",
     },
     titleContainer: {
       display: "flex",
       alignItems: "center",
+      justifyContent: isMobile ? "center" : "flex-start",
       marginBottom: "1rem",
     },
     dot: {
@@ -63,23 +67,13 @@ const AboutSection = () => {
   };
 
   return (
-    <section style={styles.section}>
+    <section id="about-us" style={styles.section}>
       <div style={styles.container}>
         {/* Image Container */}
         <div style={styles.imageContainer}>
           <img
-            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1736685645/Nothing_Phone_1_2_h2ftkq.png"
-            alt="Mobile App Screenshot 1"
-            style={styles.image}
-          />
-          <img
-            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1736685645/Nothing_Phone_1_nybplx.png"
-            alt="Mobile App Screenshot 2"
-            style={styles.image}
-          />
-          <img
-            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1736685645/Nothing_Phone_1_1_ikr0qt.png"
-            alt="Mobile App Screenshot 3"
+            src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1737150910/Group_64_fq7zu1.png"
+            alt="Mobile App Screenshot"
             style={styles.image}
           />
         </div>
@@ -107,7 +101,7 @@ const AboutSection = () => {
             and secure payment gateway.
           </p>
           <p style={styles.text}>
-            Whether you're celebrating a special milestone, sharing a heartfelt
+            Whether you&lsquo;re celebrating a special milestone, sharing a heartfelt
             promise, or planning a memorable event, GiftPixel provides the
             tools you need to make every moment extraordinary. Join our
             community today and discover a new way to create, share, and
