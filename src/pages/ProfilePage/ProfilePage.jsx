@@ -230,21 +230,8 @@ const ProfilePage = () => {
           </div>
 
           <div className="PasswordInput">
-            <Input
-              label="Password"
-              name="password"
-              type={showPassword ? "text" : "password"}
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="e.g Dawson12"
-              styleClass="general"
-            />
-            <span
-              className="PasswordToggle"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
-            </span>
+            
+           <button>Change Password</button>
           </div>
 
           {error && <div className="error-message">{error}</div>}
