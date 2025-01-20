@@ -220,7 +220,7 @@ const ProfilePage = () => {
               value={formData.phone}
               onChange={handleChange}
               placeholder="+2347046441783"
-              styleClass="general"
+              styleClass="phone"
               disabled={!isEditing.phone}
             />
             <PiNotePencilLight

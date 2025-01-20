@@ -4,7 +4,7 @@ import "../../styles/ResetPassword.css";
 import Button from "../../components/Button";
 import WelcomeSection from "../../components/WelcomeSection";
 import Input from "../../components/Inputs";
-import axios from "axios";
+import axios from "axios";//ncdsjds dskc dsmskdoe jdhsydsj d cdhjss
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Eye icon import
 
 const ResetPassword = () => {
@@ -15,8 +15,7 @@ const ResetPassword = () => {
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false); // State to track form validity
   const [showPassword, setShowPassword] = useState(false); // State for password visibility
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State for confirm password visibility
-
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State for confirm password visibility 
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -25,8 +24,6 @@ const ResetPassword = () => {
       setErrorMessage("Passwords do not match.");
       return;
     }
-
-    // Reset error message
     setErrorMessage("");
 
     console.log(resetToken);

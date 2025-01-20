@@ -52,8 +52,7 @@ const ForgetPassword = () => {
   return (
     <div className="forgetPasswordDiv">
       <div className="main-Container">
-        <WelcomeSection />
-
+        <WelcomeSection/>
         <div className="forgetpwrd-form-container">
           <form onSubmit={handleSubmit}>
             {errorMessage && <p className="error-message">{errorMessage}</p>}

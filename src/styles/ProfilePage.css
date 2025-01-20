@@ -24,7 +24,7 @@
 } */
 
 .profile-account-settingbox {
-  width: 20%;
+  width: 15%;
   height: 70vh;
 }
 
@@ -99,9 +99,14 @@
   margin-top: 10px;
   font-size: 14px;
 }
+.phone{
+  width:70rem;
+  margin-top: 10px;
+  font-size: 14px;
+}
 
 .name {
-  width: 95%;
+  width: 16.2rem;
 }
 
 .Custom-PasswordInput {

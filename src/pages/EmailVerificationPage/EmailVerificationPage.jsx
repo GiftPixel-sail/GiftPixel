@@ -23,7 +23,7 @@ const EmailVerificationPage = () => {
     try {
       // I prepared the payload with the OTP code that the user entered
       const payload = {
-        code: otp, // I send the OTP as 'code' to the backend
+        code: otp, // I send the OTP as 'code' to the backend cnciwn qisjc si cis sk9q iwmsii dmdid idms9 jnc ix sikz scims lskoscmkoskmzxi niddj
       };
 
       
@@ -41,6 +41,7 @@ const EmailVerificationPage = () => {
       });
 
       //
+      
 
       const result = await response.json();
       console.log("Verify OTP response: ", result); // I logged the response from the server
