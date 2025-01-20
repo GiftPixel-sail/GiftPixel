@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import "../../styles/WalletDetails.css";
+import "../../styles/ModalWithdrwa.css";
 
 const WalletDetails = () => {
     const [walletData, setWalletData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    const [isModalOpen, setIsModalOpen] = useState(false); 
+    const [paymentPin, setPaymentPin] = useState(['', '', '', '']); 
+    const [pinError, setPinError] = useState('');            
     const fetchWalletDetails = async () => {
         const token = Cookies.get('token');
 
@@ -49,12 +52,36 @@ const WalletDetails = () => {
     }
 
     const handleWithdraw = () => {
-        console.log("Withdraw button clicked!");
-        // Withdrawal functionality can be added here
+        setIsModalOpen(true);  
+    };
+
+    const handlePinChange = (e, index) => {
+        const newPin = [...paymentPin];
+        newPin[index] = e.target.value;
+        setPaymentPin(newPin);
+
+        
+        if (e.target.value && index < 3) {
+            document.getElementById(`pin-input-${index + 1}`).focus();
+        }
+    };
+
+    const handlePinSubmit = () => {
+        const pin = paymentPin.join('');
+        if (pin.length !== 4) {
+            setPinError('Please enter all 4 digits of your payment pin.');
+        } else {
+           
+            console.log("Withdraw with pin:", pin);
+
+           
+            setIsModalOpen(false);
+            setPaymentPin(['', '', '', '']);  
+            setPinError('');    
+        }
     };
 
     return (
-
         <div className="wallet-container">
             {/* Wallet Balance */}
             <div className="wallet-balance">
@@ -78,24 +105,19 @@ const WalletDetails = () => {
                     </select>
                 </div>
 
-
-    
                 <table className="transactions-table">
                     <thead>
                         <tr>
                             <th>Date</th>
                             <th>Description</th>
                             <th>Amount</th>
-
                             <th>Status</th>
-
                             <th>Transaction ID</th>
                         </tr>
                     </thead>
                     <tbody>
                         {walletData.transactions.map((transaction, index) => (
                             <tr key={index}>
-
                                 <td>{new Date(transaction.timestamp).toLocaleString()}</td>
                                 <td>{transaction.description || "N/A"}</td>
                                 <td>₦{transaction.amount?.toLocaleString() || "0.00"}</td>
@@ -103,12 +125,41 @@ const WalletDetails = () => {
                                     {transaction.status || "Unknown"}
                                 </td>
                                 <td>{transaction.Transaction_ID || "N/A"}</td>
-
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
+
+            {/* Modal for Payment Pin */}
+            {isModalOpen && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <h2>Enter Your Payment Pin</h2>
+                        <div className="pin-input-container">
+                            {paymentPin.map((digit, index) => (
+                                <input
+                                    key={index}
+                                    id={`pin-input-${index}`}
+                                    type="password"
+                                    value={digit}
+                                    onChange={(e) => handlePinChange(e, index)}
+                                    maxLength="1"
+                                    className="payment-pin-input"
+                                    autoFocus={index === 0} 
+                                />
+                            ))}
+                        </div>
+                        {pinError && <p className="error-message">{pinError}</p>}
+                        <button onClick={handlePinSubmit} className="submit-pin-button">
+                            Submit
+                        </button>
+                        <button onClick={() => setIsModalOpen(false)} className="close-modal-button">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
