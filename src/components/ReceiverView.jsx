@@ -52,23 +52,28 @@ const ReceiverView = () => {
   }, [promiseTitleId]);
 
   useEffect(() => {
+    // Check if "Buy Now" was clicked previously and tracking ID has not been submitted yet
     const hasClickedBuyNow = Cookies.get("hasClickedBuyNow");
     const trackingIdSubmitted = Cookies.get("trackingIdSubmitted");
 
-    
     if (hasClickedBuyNow && !trackingIdSubmitted) {
-      setTrackingIdModalState({ isOpen: true, requestId: hasClickedBuyNow, trackingId: '' });
+      // Show the tracking ID modal
+      setTrackingIdModalState({
+        isOpen: true,
+        requestId: hasClickedBuyNow,
+        trackingId: ''
+      });
     }
   }, []);
 
   const handleBuyNowRedirect = (requestId, value) => {
-    
+    // Set a flag indicating that Buy Now was clicked
     Cookies.set("hasClickedBuyNow", requestId, { expires: 7 });
 
-    
+    // Open the gift item or purchase URL in a new tab
     window.open(value, '_blank');
 
-  
+    // Reload the page to show the tracking ID modal when they return
     window.location.reload();
   };
 
@@ -134,29 +139,43 @@ const ReceiverView = () => {
     setReceiverView(null);
   };
 
+  // Handle tracking ID modal submit
   const handleTrackingIdSubmit = () => {
-    console.log('Tracking ID Submitted:', trackingIdModalState.trackingId);
-
-   
+    const { trackingId } = trackingIdModalState;
+  
+    // Check if the tracking ID field is empty
+    if (!trackingId) {
+      toast.error('Tracking ID cannot be empty.');
+      return;
+    }
+  
+    // Check if the tracking ID starts with 'JE-MAE'
+    if (!trackingId.startsWith('JE-MAE')) {
+      toast.error('Invalid TrackingId".');
+      return;
+    }
+  
+    console.log('Tracking ID Submitted:', trackingId);
+  
+    // Set flag indicating tracking ID has been submitted
     Cookies.set("trackingIdSubmitted", "true", { expires: 7 });
-
-    
+  
+    // Close the tracking ID modal
     setTrackingIdModalState({ isOpen: false, requestId: null, trackingId: '' });
   };
-
-  
+  // Handle cancel action in tracking ID modal
   const handleTrackingIdCancel = () => {
-   
+    // Remove the "hasClickedBuyNow" flag to prevent modal from showing again without re-clicking Buy Now
     Cookies.remove("hasClickedBuyNow");
 
-   
+    // Close the modal
     setTrackingIdModalState({ isOpen: false, requestId: null, trackingId: '' });
   };
 
   if (loading) {
     return (
       <div className="loading-spinner">
-        <div className="skeleton-loader"></div>
+        <div className="skeleton-loader"></div> {/* A simple skeleton loader */}
       </div>
     );
   }

@@ -26,11 +26,11 @@ const WalletDetails = () => {
 
     const modalContentRef = useRef(null);
 
-    const validBankNames = [
-        "Access Bank", "Guaranty Trust Bank", "First Bank", "Zenith Bank", 
-        "United Bank for Africa", "Stanbic IBTC", "Fidelity Bank", 
-        "Ecobank", "Wema Bank", "Union Bank", "Standard Chartered Bank"
-    ];
+    // const validBankNames = [
+    //     "Access Bank", "Guaranty Trust Bank", "First Bank", "Zenith Bank", 
+    //     "United Bank for Africa", "Stanbic IBTC", "Fidelity Bank", 
+    //     "Ecobank", "Wema Bank", "Union Bank", "Standard Chartered Bank"
+    // ];
 
     const fetchWalletDetails = async () => {
         const token = Cookies.get('token');
@@ -158,12 +158,12 @@ const WalletDetails = () => {
             return false;
         }
 
-        if (!validBankNames.includes(bankName.trim())) {
-            toast.error('Please enter a valid bank name.');
-            return false;
-        }
+        // if (!validBankNames.includes(bankName.trim())) {
+        //     toast.error('Please enter a valid bank name.');
+        //     return false;
+        // }
 
-        toast.error(null); // Clear error if validation passes
+        // toast.error(null);
         return true;
     };
 
@@ -182,7 +182,7 @@ const WalletDetails = () => {
 
         try {
             const token = Cookies.get("token");
-            const response = await axios.post('https://your-api-endpoint/withdraw', withdrawalData, {
+            const response = await axios.post('https://auth-zxvu.onrender.com/api/auth/withdraw', withdrawalData, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },

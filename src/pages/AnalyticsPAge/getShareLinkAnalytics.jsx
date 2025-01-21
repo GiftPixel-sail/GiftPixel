@@ -197,7 +197,7 @@ const GetShareLinkAnalytics = () => {
       {/* Back Button */}
       <button 
         className="back-button"
-        onClick={() => navigate("/promiselist")}
+        onClick={() => navigate("/promiseList")}
       >
         Back
       </button>

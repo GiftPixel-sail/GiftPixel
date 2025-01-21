@@ -1,4 +1,4 @@
-import  { useState} from 'react';
+import { useState } from 'react';
 import GiftPixelLogo from "../assets/GiftPixel.svg";
 import { IoNotifications } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
@@ -10,10 +10,10 @@ import Cookies from "js-cookie";
 
 const Header = () => {
   const [notifications, setNotifications] = useState([]);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for hamburger menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const token = Cookies.get("token");
 
@@ -35,9 +35,10 @@ const Header = () => {
         }
       );
 
-      const sortedNotifications = response.data.notifications.sort(
-        (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
-      );
+      const sortedNotifications = response.data.notifications
+        .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+        .slice(0, 10);
+
       setNotifications(sortedNotifications);
     } catch (err) {
       console.error("Error fetching notifications:", err);
@@ -49,7 +50,7 @@ const Header = () => {
 
   const handleNotificationClick = () => {
     if (token) {
-      setIsDropdownOpen(!isDropdownOpen); // Toggle dropdown
+      setIsDropdownOpen(!isDropdownOpen);
       fetchNotifications(token);
     } else {
       setError("User not authenticated");
@@ -66,12 +67,11 @@ const Header = () => {
 
   return (
     <div className="header-container">
-  <div className="logo-container">
-    <Link to="/promiseList">
-      <img src={GiftPixelLogo} alt="Logo image" />
-    </Link>
-  </div>
-
+      <div className="logo-container">
+        <Link to="/promiseList">
+          <img src={GiftPixelLogo} alt="Logo image" />
+        </Link>
+      </div>
 
       <div className={`links-container ${isMenuOpen ? 'active' : ''}`}>
         <Link to={"/promiseList"} className="anchor-link" onClick={handleLinkClick}>
@@ -81,8 +81,11 @@ const Header = () => {
         <Link to={"/walletBalance"} className="anchor-link" onClick={handleLinkClick}>
           <nav>Wallet</nav>
         </Link>
+        <Link to={"/marketplace"} className="anchor-link" onClick={handleLinkClick}>
+          <nav>MarketPlace</nav>
+        </Link>
 
-        <nav onClick={handleLinkClick}>Settings</nav>
+       
       </div>
 
       <div className="profile-container">
@@ -92,40 +95,37 @@ const Header = () => {
           <CgProfile size={24} />
         </Link>
 
-  {/* Notification Dropdown */}
-{isDropdownOpen && (
-  <div className="notification-dropdown">
-    <button className="close-btn" onClick={() => setIsDropdownOpen(false)}>×</button> 
-    <h3>Notifications</h3>
-    {loading ? (
-      <div>Loading...</div>
-    ) : error ? (
-      <div>{error}</div>
-    ) : notifications.length > 0 ? (
-      notifications.map((notification, index) => (
-        <div key={index} className="notification-item">
-          <div className="notification-icon">
-            {notification.type === 'promise_created' ? (
-              <FaGift size={24} color="green" />
-            ) : notification.type === 'request_created' ? (
-              <FaHandHolding size={24} color="blue" />
-            ) : null}
+        {isDropdownOpen && (
+          <div className="notification-dropdown">
+            <button className="close-btn" onClick={() => setIsDropdownOpen(false)}>×</button>
+            <h3>Notifications</h3>
+            {loading ? (
+              <div>Loading...</div>
+            ) : error ? (
+              <div>{error}</div>
+            ) : notifications.length > 0 ? (
+              notifications.map((notification, index) => (
+                <div key={index} className="notification-item">
+                  <div className="notification-icon">
+                    {notification.type === 'promise_created' ? (
+                      <FaGift size={24} color="green" />
+                    ) : notification.type === 'request_created' ? (
+                      <FaHandHolding size={24} color="blue" />
+                    ) : null}
+                  </div>
+                  <div className="notification-text">
+                    <p>{notification.message}</p>
+                    <small>{new Date(notification.timestamp).toLocaleString()}</small>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div>No new notifications</div>
+            )}
           </div>
-          <div className="notification-text">
-            <p>{notification.message}</p>
-            <small>{new Date(notification.timestamp).toLocaleString()}</small>
-          </div>
-        </div>
-      ))
-    ) : (
-      <div>No new notifications</div>
-    )}
-  </div>
-)}
-
+        )}
       </div>
 
-      {/* Hamburger Menu Icon */}
       <div className="hamburger-icon" onClick={toggleMenu}>
         <div className="bar"></div>
         <div className="bar"></div>

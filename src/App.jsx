@@ -23,6 +23,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import AccountSettingPage from "../src/pages/AccountSettingPage/AccountSettingPage"
 import PopUp from "./components/TransactionPinPopup.jsx.jsx"
 import ConfirmTransactinPin from "./components/ConfirmTransactionPin.jsx"
+import Marketplace from "./pages/MarketPlacePage/MarketPlace.jsx";
 
 const App = () => {
   return (
@@ -43,7 +44,8 @@ const AppContent = () => {
     "/createPromise",
     "/walletBalance",
     "/profileSettings",
-    "/accountsettingpage"
+    "/accountsettingpage",
+    "/marketplace"
   ].includes(location.pathname);
 
   return (
@@ -83,6 +85,7 @@ const AppContent = () => {
         <Route path="accountsettingpage" element={<AccountSettingPage/>}/>
         <Route path="/popup-pin" element={<PopUp/>}/>
         <Route path="/confirmtransactionpin" element={<ConfirmTransactinPin/>}/>
+        <Route path="/marketplace" element={<Marketplace/>}/>
       </Routes>
     </>
   );
