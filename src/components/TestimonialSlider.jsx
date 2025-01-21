@@ -17,7 +17,6 @@ const TestimonialSlider = ({ testimonials }) => {
     );
   };
 
-  // Inline Styles
   const sliderStyle = {
     padding: "50px 0",
     textAlign: "center",
@@ -44,9 +43,8 @@ const TestimonialSlider = ({ testimonials }) => {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    gap: "20px",
     position: "relative",
-    transition: "opacity 0.5s ease-in-out", // Smooth fade transition
+    gap: "20px",
   };
 
   const navBtnStyle = {
@@ -59,12 +57,11 @@ const TestimonialSlider = ({ testimonials }) => {
 
   const navigationStyle = {
     position: "absolute",
-    bottom: "-100px",
+    bottom: "-80px",
     left: "50%",
     transform: "translateX(-50%)",
     display: "flex",
-    justifyContent: "center",
-    gap: "10px",
+    gap: "20px",
   };
 
   return (
@@ -79,15 +76,16 @@ const TestimonialSlider = ({ testimonials }) => {
           <div
             key={index}
             style={{
-              ...contentStyle,
               opacity: index === currentIndex ? 1 : 0,
-              display: index === currentIndex ? "block" : "none", // Hide non-current testimonials
+              display: index === currentIndex ? "block" : "none",
+              transition: "opacity 0.5s ease-in-out",
             }}
           >
             <TestimonialCard
               text={testimonial.text}
               name={testimonial.name}
               image={testimonial.image}
+              highlight={index === currentIndex}
             />
           </div>
         ))}
@@ -113,4 +111,4 @@ const TestimonialSlider = ({ testimonials }) => {
   );
 };
 
-export default TestimonialSlider;
+export default TestimonialSlider;  
