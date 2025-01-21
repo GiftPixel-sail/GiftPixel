@@ -66,9 +66,12 @@ const Header = () => {
 
   return (
     <div className="header-container">
-      <div className="logo-container">
-        <img src={GiftPixelLogo} alt="Logo image" />
-      </div>
+  <div className="logo-container">
+    <Link to="/promiseList">
+      <img src={GiftPixelLogo} alt="Logo image" />
+    </Link>
+  </div>
+
 
       <div className={`links-container ${isMenuOpen ? 'active' : ''}`}>
         <Link to={"/promiseList"} className="anchor-link" onClick={handleLinkClick}>
