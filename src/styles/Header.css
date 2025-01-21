@@ -90,7 +90,7 @@
 /* Close Button Styling */
 .close-btn {
   position: absolute;
-  top: 0px;
+  top: 2px;
   right: 15px;
   background: none;
   border: none;
