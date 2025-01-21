@@ -6,8 +6,10 @@ import "../../styles/WalletDetails.css";
 import "../../styles/ModalWithdrwa.css";
 import { toast } from "react-toastify"; 
 import "react-toastify/dist/ReactToastify.css"; 
+import { useNavigate } from 'react-router-dom';
 
 const WalletDetails = () => {
+    const navigate = useNavigate()
     const [walletData, setWalletData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -34,6 +36,7 @@ const WalletDetails = () => {
         const token = Cookies.get('token');
 
         if (!token) {
+            navigate("/signIn")
             setError('Authorization token is missing.');
             setLoading(false);
             return;

@@ -25,6 +25,33 @@ const Modal = ({ shareLink, onClose }) => {
         setIsPrivate((prev) => !prev);
     };
 
+    // Function to handle sharing to social media
+    const handleShareToSocialMedia = (platform) => {
+        const encodedLink = encodeURIComponent(shareLink); // Encode the link to make it URL-safe
+        
+        let shareUrl = '';
+        switch (platform) {
+            case 'twitter':
+                shareUrl = `https://twitter.com/intent/tweet?url=${encodedLink}`;
+                break;
+            case 'instagram':
+                // Instagram doesn’t allow direct URL sharing, so you may need to guide users to share via the Instagram app.
+                // You can suggest copying the link and pasting it into the Instagram app.
+                shareUrl = `https://www.instagram.com/?url=${encodedLink}`;
+                break;
+            case 'facebook':
+                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedLink}`;
+                break;
+            case 'whatsapp':
+                shareUrl = `https://wa.me/?text=${encodedLink}`;
+                break;
+            default:
+                return;
+        }
+
+        window.open(shareUrl, '_blank');
+    };
+
     return (
         <div className="modal-overlay">
             <div className="modal-content">
@@ -48,7 +75,7 @@ const Modal = ({ shareLink, onClose }) => {
                 </div>
                 <div className="username-edit">
                     Don&apos;t like your username?
-                    <a href="#edit-username"> Edit username</a>
+                    <a href="/profileSettings"> Edit username</a>
                 </div>
                 {/* Divider line */}
                 <img
@@ -71,25 +98,25 @@ const Modal = ({ shareLink, onClose }) => {
                     </div>
                 </div>
                 <div className="social-buttons">
-                    <button className="social-button">
+                    <button className="social-button" onClick={() => handleShareToSocialMedia('twitter')}>
                         <img
                             src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1737374551/TwitterLogo_uenkeg.png"
                             alt="Twitter"
                         />
                     </button>
-                    <button className="social-button">
+                    <button className="social-button" onClick={() => handleShareToSocialMedia('instagram')}>
                         <img
                             src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1737374551/InstagramLogo_qx5m2k.png"
                             alt="Instagram"
                         />
                     </button>
-                    <button className="social-button">
+                    <button className="social-button" onClick={() => handleShareToSocialMedia('facebook')}>
                         <img
                             src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1737374551/Vector_9_gdbyoa.png"
                             alt="Facebook"
                         />
                     </button>
-                    <button className="social-button">
+                    <button className="social-button" onClick={() => handleShareToSocialMedia('whatsapp')}>
                         <img
                             src="https://res.cloudinary.com/dqbbm0guw/image/upload/v1737374551/Logo-WhatsApp_1_inol5g.png"
                             alt="WhatsApp"
@@ -101,10 +128,6 @@ const Modal = ({ shareLink, onClose }) => {
     );
 };
 
-
-
-
-// This is the request display component
 const CreatorView = ({ promiseTitleId }) => {
     const [requests, setRequests] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -115,6 +138,7 @@ const CreatorView = ({ promiseTitleId }) => {
             try {
                 const token = Cookies.get('token');
                 if (!token) {
+                    navigate("/signIn")
                     setError('User is not authenticated');
                     setLoading(false);
                     return;
@@ -257,8 +281,6 @@ const PromiseDetailPage = () => {
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             if (response.data.shareLink) {
-                console.log(response.data);
-                
                 setShareLink(response.data.shareLink);
                 setShowModal(true);
             } else {

@@ -21,6 +21,7 @@ const PromiseListPage = () => {
   useEffect(() => {
     const token = Cookies.get("token");
     if (!token) {
+      navigate("/signIn")
       console.error("Authentication token is missing");
       return;
     }
@@ -33,6 +34,12 @@ const PromiseListPage = () => {
       })
       .then((response) => {
         setUser(response.data);
+        console.log(response.data.username);
+
+        const username = response.data.username
+        
+        Cookies.set("username",username);
+        
       })
       .catch((error) => {
         navigate("/signin");

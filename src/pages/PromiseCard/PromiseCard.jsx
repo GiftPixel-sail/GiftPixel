@@ -17,7 +17,7 @@ const PromiseCard = () => {
     const token = Cookies.get("token");
 
     if (!token) {
-      setLoading(false);
+      navigate("/signIn")
       return;
     }
 

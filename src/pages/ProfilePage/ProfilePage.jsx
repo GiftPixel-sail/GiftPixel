@@ -4,7 +4,6 @@ import { AiOutlineUser } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { PiNotePencilLight } from "react-icons/pi";
 import Cookies from "js-cookie";
-import Input from "../../components/Inputs";
 import ProfileImage from "../../components/ProfileImage";
 import "../../styles/ProfilePage.css";
 
@@ -87,8 +86,8 @@ const ProfilePage = () => {
   };
 
   const handleAcctSettings = () => {
-    navigate("/accountsettingpage")
-  }
+    navigate("/accountsettingpage");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -155,13 +154,13 @@ const ProfilePage = () => {
         <form className="Personalsetting-form" onSubmit={handleSubmit}>
           <div className="formrow">
             <div className="inputContainer">
-              <Input
-                label="First name"
+              <label>First name</label>
+              <input
+                type="text"
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleChange}
                 placeholder="e.g Hamzah"
-                styleClass="name"
                 disabled={!isEditing.firstName}
               />
               <PiNotePencilLight
@@ -171,13 +170,13 @@ const ProfilePage = () => {
             </div>
 
             <div className="inputContainer">
-              <Input
-                label="Last name"
+              <label>Last name</label>
+              <input
+                type="text"
                 name="lastName"
                 value={formData.lastName}
                 onChange={handleChange}
                 placeholder="e.g Alagbe"
-                styleClass="name"
                 disabled={!isEditing.lastName}
               />
               <PiNotePencilLight
@@ -188,39 +187,37 @@ const ProfilePage = () => {
           </div>
 
           <div className="inputContainer">
-            <Input
-              label="Username"
+            <label>Username</label>
+            <input
+              type="text"
               name="username"
               value={formData.username}
               onChange={handleChange}
               placeholder="e.g Halalhustler"
-              styleClass="general"
               disabled
             />
           </div>
 
           <div className="inputContainer">
-            <Input
-              label="Email"
-              name="email"
+            <label>Email</label>
+            <input
               type="email"
+              name="email"
               value={formData.email}
               onChange={handleChange}
               placeholder="e.g hamzahalagbe27@gmail.com"
-              styleClass="general"
               disabled
             />
           </div>
 
           <div className="inputContainer">
-            <Input
-              label="Phone number"
-              name="phone"
+            <label>Phone number</label>
+            <input
               type="tel"
+              name="phone"
               value={formData.phone}
               onChange={handleChange}
               placeholder="+2347046441783"
-              styleClass="phone"
               disabled={!isEditing.phone}
             />
             <PiNotePencilLight
@@ -230,8 +227,7 @@ const ProfilePage = () => {
           </div>
 
           <div className="PasswordInput">
-            
-           <button>Change Password</button>
+            <button>Change Password</button>
           </div>
 
           {error && <div className="error-message">{error}</div>}

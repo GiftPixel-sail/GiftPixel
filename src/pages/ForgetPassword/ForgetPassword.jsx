@@ -5,6 +5,8 @@ import Button from "../../components/Button";
 import WelcomeSection from "../../components/WelcomeSection";
 import Input from "../../components/Inputs";
 import axios from "axios";
+import { toast } from "react-toastify"; 
+import "react-toastify/dist/ReactToastify.css"; 
 
 const ForgetPassword = () => {
   const [isEmailValid, setIsEmailValid] = useState(false);
@@ -23,15 +25,13 @@ const ForgetPassword = () => {
    
     setErrorMessage("");
 
-    
     setIsLoading(true);
 
-   
     axios.post("https://auth-zxvu.onrender.com/api/auth/reset-password", { email })
       .then(response => {
         setIsRequestSent(true); 
         console.log("Backend Response:", response); 
-        alert("Password reset link has been sent to your email.");
+        toast("Password reset link has been sent to your email.");
       })
       .catch(response => {
         console.log("Error resetting password:", response)
@@ -42,7 +42,6 @@ const ForgetPassword = () => {
       });
   };
 
- 
   const handleEmailChange = (e) => {
     const email = e.target.value;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -52,7 +51,7 @@ const ForgetPassword = () => {
   return (
     <div className="forgetPasswordDiv">
       <div className="main-Container">
-        <WelcomeSection/>
+        <WelcomeSection />
         <div className="forgetpwrd-form-container">
           <form onSubmit={handleSubmit}>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
@@ -68,7 +67,6 @@ const ForgetPassword = () => {
               styleClass={"forgetpwrd-input"}
             />
 
-           
             <Button
               label={isLoading ? "Sending..." : "Send Reset Link"}
               styleClass={isEmailValid ? "primary-button-valid" : "primary-button"}
@@ -76,11 +74,15 @@ const ForgetPassword = () => {
               disabled={!isEmailValid || isLoading}
             />
 
-            
-            {isLoading && <div className="spinner">Loading...</div>}
+            {/* Spinner when loading */}
+            {isLoading && (
+              <div className="spinner-container">
+                <div className="spinner2"></div>
+                <p className="loading-text">Sending...</p>
+              </div>
+            )}
           </form>
 
-         
           <div className="backToSignIn">
             <p>
               Remembered your password? <Link to="/signin">Sign In</Link>

@@ -1,35 +1,30 @@
-
 .setting-page {
   display: flex;
   gap: 20px;
   padding: 20px;
   background: rgba(242, 223, 216, 1);
+  flex-wrap: wrap;  
+  min-height: 100vh;
 }
 
-.profile-account-settingbox, .info-box {
+.profile-account-settingbox,
+.info-box {
   background: #ffffff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 20px;
 }
 
-/* .profile:hover {
-  background: rgba(242, 242, 242, 1);
-  width: 10rem;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-} */
-
 .profile-account-settingbox {
-  width: 15%;
-  height: 70vh;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 .info-box {
-  width: 50%;
+  width: 100%;
+  max-width: 900px;
 }
 
 .setting-item {
@@ -72,6 +67,7 @@
   border-radius: 50%;
   color: red;
   margin-left: 10px;
+  padding: 5px;
 }
 
 .icon:hover {
@@ -99,14 +95,16 @@
   margin-top: 10px;
   font-size: 14px;
 }
-.phone{
-  width:70rem;
+
+.phone {
+  width: 100%;
   margin-top: 10px;
   font-size: 14px;
 }
 
 .name {
-  width: 16.2rem;
+  width: 100%;
+  max-width: 250px;
 }
 
 .Custom-PasswordInput {
@@ -118,19 +116,21 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 13px;
+  width: 40%;
+  margin: 20px;
 }
 
 .inputContainer input:disabled {
   background-color: #f0f0f0;
   cursor: not-allowed;
+  opacity: 0.7;
 }
 
-.PasswordInput {
-  position: relative;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  width: 100%;
+.inputContainer input:focus:disabled {
+  border-color: #ccc;
+  outline: none;
 }
+
 
 .PasswordToggle {
   position: absolute;
@@ -147,7 +147,6 @@
 
 .ValidationMessage li {
   margin-bottom: 5px;
-  text-decoration: none;
 }
 
 .ValidationMessage .valid {
@@ -158,3 +157,58 @@
   color: red;
 }
 
+
+
+@media (max-width: 1200px) {
+  .profile-account-settingbox {
+    width: 100%;
+  }
+
+  .info-box {
+    width: 55%;
+  }
+}
+
+@media (max-width: 768px) {
+  .setting-page {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-account-settingbox,
+  .info-box {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+  /* .inputContainer{
+    flex-direction: column;
+  } */
+
+  .inputContainer input{
+    width: 80%
+  }
+
+  .name,
+  .phone {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-account-settingbox {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .info-box {
+    width: 100%;
+  }
+
+  .setting-item {
+    font-size: 0.9rem;
+  }
+
+  .inputContainer input {
+    font-size: 12px;
+  }
+}

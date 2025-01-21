@@ -42,7 +42,8 @@ const AppContent = () => {
     "/promiseList",
     "/createPromise",
     "/walletBalance",
-    "/profileSettings"
+    "/profileSettings",
+    "/accountsettingpage"
   ].includes(location.pathname);
 
   return (
